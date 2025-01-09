@@ -7,4 +7,6 @@ Global protect será la VPN que procederemos a utilizar para los proyectos de Ca
 
 ## 📍 Instalación del cliente Citrix.
 - Envio de solicitud para los privilegios de admin.
+
+
 - 
