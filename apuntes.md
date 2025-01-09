@@ -5,6 +5,6 @@ Apuntes de lo que ocurre en el dia.
 Global protect será la VPN que procederemos a utilizar para los proyectos de Caixa.
 
 
-## 📍 Instalacion del cliente Citrix.
+## 📍 Instalación del cliente Citrix.
 - Envio de solicitud para los privilegios de admin.
 - 
