@@ -38,7 +38,7 @@ En el trabajo de equipo, es crucial que todos puedan ver en todo momento 'que es
 #### 🔸 Despliegue automatico.
 Despliegue sin intervención manual, utilizando herramientas y scripts que automatizan las tareas necesarias. Permite que los equipos puedan entregar actualizaciones de software de manera más rápida, confiable y consistente.
 
->![CAUTION]
+>[!CAUTION]
 > En la integración continua, es importante hacer check-in de manera frecuente, **siempre y cuando el código haya sido testeado, no presente errores y la build funcione correctamente**.
 
 
@@ -165,15 +165,19 @@ Jenkins es una herramienta de código abierto diseñada para facilitar los proce
 >[!TIP]
 >**Jenkins Job**: Un Jenkin Job es una tarea ejecutable que es supervisada y ejecutada por Jenkins.
 
-### 📍 Arquitectura de Maestro y Esclavo.
+## 📍 Arquitectura de Maestro y Esclavo.
 Jenkins está basado en arquitectura de Maestro y Esclavo, en la que el Maestro se encarga de programar los Jenkins Jobs y enviarlos al Esclavo para que este los ejecute e informen del resultado.
 
-#### 🗒️ El maestro:
+### 🗒️ El maestro:
 En Jenkins, el maestro (también conocido como master) es el servidor principal que coordina y gestiona todo el proceso de integración continua. Es el componente central de Jenkins, desde el cual se gestionan las tareas, configuraciones y comunicación con los esclavos (nodos agentes). En términos de arquitectura, el maestro es el componente central de Jenkins, y se refiere a la máquina o proceso donde se ejecuta el software principal de Jenkins, que incluye la interfaz web, la lógica de orquestación y la administración de trabajos.
 
-#### 🗒️ El esclavo o agente:
+### 🗒️ El nodo esclavo:
 En los términos de hardware y software, un esclavo (también llamado nodo agente o agent node) en Jenkins es una máquina o entorno que se conecta al maestro para ejecutar trabajos específicos que le son asignados. **Un esclavo de Jenkins puede ser cualquier máquina física, virtual o contenedor que tenga la capacidad de ejecutar trabajos de Jenkins.** El software que ejecuta un esclavo de Jenkins incluye principalmente el agente de Jenkins (Jenkins agent), que es un proceso o servicio que se ejecuta en la máquina esclava. Este agente es responsable de permitir que el esclavo se conecte con el maestro de Jenkins y reciba las tareas asignadas.
 
+### 🗒️ El agente esclavo:
+En un nodo esclavo de Jenkins, puedes tener múltiples agentes esclavos, cada uno de los cuales puede ejecutar trabajos de manera independiente. Este enfoque es útil cuando deseas aprovechar los recursos de un solo nodo esclavo para ejecutar varios trabajos en paralelo, o cuando necesitas distintos entornos de ejecución en el mismo nodo físico o virtual.
+
+![imagen](https://github.com/user-attachments/assets/ed966825-acfc-4ba0-8bf6-d0f53b7883c5)
 
 
 
