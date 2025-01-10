@@ -32,7 +32,7 @@ Existen distintas maneras de instalar y montar Jenkins.
 4. Instalación contenedorizada en Docker local.
 
 ## 📍 Instalación de Jenkins en Docker.
-Con docker instalado en el equipo, seguimos los pasos a continaución:
+Con docker instalado en el equipo, seguimos los pasos a continuación:
 
 1. Vamos a la página de dockerhub para la imágen de Jenkins. https://hub.docker.com/r/jenkins/jenkins
 2. Copiamos el comando de pull indicado `docker pull jenkins/jenkins`.    
