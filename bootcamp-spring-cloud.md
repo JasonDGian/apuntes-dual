@@ -60,7 +60,7 @@ Es relevante destacar que, al registrarse o buscar en Eureka, el microservicio p
    
 ![image](https://github.com/user-attachments/assets/2210f87c-2ad5-4ae7-820a-f406840b9424)
 
-## Pasos practicos.
+## 📋 Pasos practicos.
 En esta práctica se creará un servicio Eureka, que se usará para registrar nuestros primeros microservicios.​
 
 El primer paso para crear un servicio Eureka será generar un proyecto Spring Boot desde la web de Spring:​
