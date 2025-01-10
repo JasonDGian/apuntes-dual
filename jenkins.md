@@ -131,3 +131,23 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >    
 >![image](https://github.com/user-attachments/assets/87056e14-61b0-4735-b662-f8ebc4f4a227)
 
+
+OPCINAL: Fichero docker compose.
+```yml
+version: '3'
+services:
+jenkins:
+image: jenkins/jenkins
+ports:
+- 8080:8080
+- 50000:50000
+container_name: jenkins
+privileged: true
+user: root
+volumes:
+- $PWD/jenkins_home:/var/jenkins_home
+networks:
+- net
+networks:
+net:
+```
