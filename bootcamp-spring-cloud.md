@@ -1,4 +1,4 @@
-# Bootcamp Spring Cloud.
+![image](https://github.com/user-attachments/assets/bb599b9b-9b89-439f-a573-770162141903)# Bootcamp Spring Cloud.
 
 - - - 
 
@@ -60,7 +60,7 @@ Es relevante destacar que, al registrarse o buscar en Eureka, el microservicio p
    
 ![image](https://github.com/user-attachments/assets/2210f87c-2ad5-4ae7-820a-f406840b9424)
 
-## 📋 Pasos practicos.
+## 📋 Pasos practicos - Crear el servicio de descubrimiento EUREKA.
 En esta práctica se creará un servicio Eureka, que se usará para registrar nuestros primeros microservicios.​
 
 El primer paso para crear un servicio Eureka será generar un proyecto Spring Boot desde la web de Spring:​
@@ -167,10 +167,117 @@ Más información y referencias sobre la creación y configuración de un servic
 - https://docs.spring.io/spring-cloud-netflix/docs/2.2.5.RELEASE/reference/html/#service-discovery-eureka-clients
 - https://spring.io/guides/gs/service-registration-and-discovery/​
 
+
+## 📋 Pasos practicos - Crear y configurar un microservicio para que use EUREKA.
 Tras haber creado un servicio Eureka, crearemos nuestro primer microservicio y veremos cómo se registran y se visualizan en Eureka los registros desplegados.​
 
 
+Acceder a la web de spring initializer y generar la siguiente configuración base para nuestro proyecto:​
+![image](https://github.com/user-attachments/assets/abcd1271-3cc6-4942-895c-a40d1bf3a875)
 
-     
+
+Una vez generado el proyecto product-service, se descomprimirá en la ruta del workspace en uso.​
+
+A continuación, hay que importar el proyecto desde Eclipse como un “Existing Maven Project”. ​
+
+Para que nuestro primer microservicio pueda integrarse con Eureka se deberán seguir los siguientes pasos:​   
+
+1. Añadir en el fichero pom.xml la propiedad <spring-cloud.version>, dentro de la etiqueta <properties>:​
+```xml
+<properties>​
+
+    <java.version>11</java.version>​
+
+    <spring-cloud.version>2021.0.0</spring-cloud.version>​
+
+</properties>​
+```
+2. Añadir en el fichero pom.xml la dependencia starter de Eureka Client:​
+```xml
+<dependency>​
+
+    <groupId>org.springframework.cloud</groupId>​
+
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>​
+
+</dependency>​
+```
+3. Se continúa con la configuración del pom.xml añadiendo un nuevo bloque <dependencyManagement>, que podemos ubicar después del bloque <dependencies> (no dentro), y antes de la etiqueta de apertura del bloque <build>:​
+```xml
+<dependencyManagement>​
+
+    <dependencies>​
+
+        <dependency>​
+
+            <groupId>org.springframework.cloud</groupId>​
+
+            <artifactId>spring-cloud-dependencies</artifactId>​
+
+            <version>${spring-cloud.version}</version>​
+
+            <type>pom</type>​
+
+            <scope>import</scope>​
+
+        </dependency>​
+
+     </dependencies>​
+
+</dependencyManagement>​
+```
+
+Finalmente, el fichero pom.xml debe tener este aspecto:​
+![image](https://github.com/user-attachments/assets/2a4278e9-b5b9-45f1-8b7b-a5095050bb16)
+
+
+
+4. Renombrar el fichero de configuración application.properties (ubicado en src/main /resources), que pasará a tener el nombre: application.yml​
+
+
+
+5. Añadir en el fichero application.yml la siguiente configuración:​
+```yaml
+server:​
+
+   port: 8080​
+
+spring:​
+
+   application:​
+
+      name: product-service​
+
+   cloud:​
+
+      config:​
+
+         import-check:​
+
+            enabled: false​
+
+eureka:​
+
+  client:​
+
+    service-url:​
+
+      defaultZone: http://localhost:8761/eureka/
+```
+
+6. Compilar correctamente el proyecto lanzando una Maven Build (clean install).​
+
+
+
+7. Teniendo arrancado el servidor de Eureka, arrancar el proyecto product-service y acceder desde el navegador a la dirección localhost:8761. Comprobar que product-service está registrado en Eureka:​
+
+![image](https://github.com/user-attachments/assets/29d990e6-4dfe-4629-8c2c-c7f790c461e4)
+
+
+
+
+Otra notas de eureka:
+Eureka es un proyecto open source de Netflix, empresa lider en liberias opensource para springboot. Entr ellas están Eureka, Ribbon, Hysterix y Zuul. Netflix creó Eureka por necesidad, y luego abrio su desarrollo al mundo del open source. Eureka encaja muy bien en el ecosistema Spring y es muy comun verlo en uso en el contexto de microservicios Springboot.
+La comunidad de Spring vió lo bien que encaja Eureka y construyeron "wrappers" para implementarlo bien en spring.
 
 
