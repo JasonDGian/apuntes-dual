@@ -1,8 +1,3 @@
-# 📓 ¿Qué es Jenkins?
-enkins es una herramienta de código abierto diseñada para facilitar los procesos de integración continua (CI) y entrega continua (CD) en el desarrollo de software. Se utiliza para automatizar la construcción, prueba y despliegue de aplicaciones, permitiendo a los equipos trabajar de manera más eficiente y detectar errores rápidamente.
-
----
-
 # 📌 Antes de comenzar: ¿Qué es la Integracion continua (CI)?
 La integración continua (CI) es una práctica de desarrollo de software que consiste en integrar y verificar automáticamente el código nuevo en un repositorio central varias veces al día. 
 Esta práctica permite detectar y corregir errores rápidamente, mejorando la calidad del software y facilitando la colaboración entre desarrolladores.
@@ -43,14 +38,16 @@ En el trabajo de equipo, es crucial que todos puedan ver en todo momento 'que es
 #### 🔸 Despliegue automatico.
 Despliegue sin intervención manual, utilizando herramientas y scripts que automatizan las tareas necesarias. Permite que los equipos puedan entregar actualizaciones de software de manera más rápida, confiable y consistente.
 
+>![CAUTION]
+> En la integración continua, es importante hacer check-in de manera frecuente, **siempre y cuando el código haya sido testeado, no presente errores y la build funcione correctamente**.
+
+
 # 📌 Antes de comenzar: ¿Qué es el Despliegue Continuo?
 El despliegue continuo es una práctica en el desarrollo de software que consiste en automatizar la liberación de cada compilación exitosa al entorno de producción, una vez que ha pasado todas las pruebas necesarias. Esta práctica asegura entregas rápidas, consistentes y confiables, optimizando el flujo de desarrollo.
     
 >[!TIP]
 >El conjunto de Integracion Continua con Despliegue continuo se conoce como `CI/CD`
     
-
-
 # 📌 Instalación de Jenkins con Docker (Windows).
 >[!IMPORTANT]
 > Antes de comenzar con la instalación, debemos de tener instalado y adecuadamente configurado Docker.
@@ -158,22 +155,44 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >![image](https://github.com/user-attachments/assets/87056e14-61b0-4735-b662-f8ebc4f4a227)
 
 
-OPCINAL: Fichero docker compose.
+---
+
+# 📌 Introduccion a Jenkins.
+
+## 📓 ¿Qué es Jenkins?
+Jenkins es una herramienta de código abierto diseñada para facilitar los procesos de integración continua (CI) y entrega continua (CD) en el desarrollo de software. Se utiliza para automatizar la construcción, prueba y despliegue de aplicaciones, permitiendo a los equipos trabajar de manera más eficiente y detectar errores rápidamente. Se puede utilizar en cualquier sistema operativo, de modo local o en cloud, y puede ser contenedorizado.
+
+>[!TIP]
+>**Jenkins Job**: Un Jenkin Job es una tarea ejecutable que es supervisada y ejecutada por Jenkins.
+
+### 📍 Arquitectura de Maestro y Esclavo.
+Jenkins está basado en arquitectura de Maestro y Esclavo, en la que el Maestro se encarga de programar los Jenkins Jobs y enviarlos al Esclavo para que este los ejecute e informen del resultado.
+
+#### 🗒️ El maestro:
+En Jenkins, el maestro (también conocido como master) es el servidor principal que coordina y gestiona todo el proceso de integración continua. Es el componente central de Jenkins, desde el cual se gestionan las tareas, configuraciones y comunicación con los esclavos (nodos agentes). En términos de arquitectura, el maestro es el componente central de Jenkins, y se refiere a la máquina o proceso donde se ejecuta el software principal de Jenkins, que incluye la interfaz web, la lógica de orquestación y la administración de trabajos.
+
+#### 🗒️ El esclavo o agente:
+En los términos de hardware y software, un esclavo (también llamado nodo agente o agent node) en Jenkins es una máquina o entorno que se conecta al maestro para ejecutar trabajos específicos que le son asignados. **Un esclavo de Jenkins puede ser cualquier máquina física, virtual o contenedor que tenga la capacidad de ejecutar trabajos de Jenkins.** El software que ejecuta un esclavo de Jenkins incluye principalmente el agente de Jenkins (Jenkins agent), que es un proceso o servicio que se ejecuta en la máquina esclava. Este agente es responsable de permitir que el esclavo se conecte con el maestro de Jenkins y reciba las tareas asignadas.
+
+
+
+
+# 🗒️ OPCIONAL: Fichero docker compose.
 ```yml
-version: '3'
-services:
-jenkins:
-image: jenkins/jenkins
-ports:
-- 8080:8080
-- 50000:50000
-container_name: jenkins
-privileged: true
-user: root
-volumes:
-- $PWD/jenkins_home:/var/jenkins_home
-networks:
-- net
-networks:
-net:
+    version: '3'
+    services:
+        jenkins:
+            image: jenkins/jenkins 
+            ports:
+                - 8080:8080
+                - 50000:50000
+            container_name: jenkins
+            privileged: true
+            user: root
+            volumes:
+                - $PWD/jenkins_home:/var/jenkins_home 
+            networks:
+                - net
+    networks:
+        net: 
 ```
