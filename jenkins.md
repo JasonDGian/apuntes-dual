@@ -125,7 +125,7 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >```bash
 >chown 1000 jenkins
 >```
-    
+     
 >[!IMPORTANT]
 >En una instalación de Docker, Jenkins generalmente usa el UID 1000 si la cuenta de usuario de Jenkins dentro del contenedor está configurada con ese UID. Esto puede depender de la imagen de Docker específica que estés utilizando para Jenkins. Muchas imágenes de Docker, incluyendo la oficial de Jenkins, están configuradas para ejecutar Jenkins bajo un usuario que tiene el UID 1000 por defecto.
 
