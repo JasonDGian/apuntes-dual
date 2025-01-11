@@ -64,7 +64,7 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >```bash
 >docker pull jenkins/jenkins
 >```
-    
+       
 **2. Creamos un directorio para que haga de 'home' a nuestra instalación de Jenkins.**    
 >Este directorio es importante porque al apagar el contenedor el contenido se perderá, para evitar perderlo configuraremos un volumen de docker en nuestro
 >host que será el encargado de mantener esos datos y ficheros.
@@ -110,6 +110,8 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >```bash
 >docker pull jenkins/jenkins
 >```
+
+![imagen](https://github.com/user-attachments/assets/9ad4c5aa-36fe-4094-a7be-a74e7730669e)
     
 **2. Creamos un directorio para que haga de 'home' a nuestra instalación de Jenkins.**    
 > Este directorio es importante porque al apagar el contenedor el contenido se perderá, para evitar perderlo configuraremos un volumen de docker en nuestro
@@ -117,14 +119,20 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >```bash
 >mkdir -p jenkins/jenkins_home
 >```
+>
+![imagen](https://github.com/user-attachments/assets/a3489a05-0579-4e6a-8a96-ce8f7f00c2be)
 
 >[!NOTE]
 >En instalaciones tipicas, jenkins utiliza el directorio `/var/jenkins_home/` para almacenar sus datos y ficheros.
 
 **3. Otorgamos permisos necesarios en la carpeta al usuario Jenkins ( normalmente utiliza UID 1000 ).**   
+Con este comando otorgaremos la propiedad del directorio `jenkins` al usuario 1000 y grupo 1000, necesario para que el contenedor pueda usar el directorio adecuadamente.
+Para más información acerca de este apartado consultar [este documento](#usuario-jenkins.md). 
 >```bash
->chown 1000 jenkins
+>sudo chown -R 1000:1000 jenkins
 >```
+
+
      
 >[!IMPORTANT]
 >En una instalación de Docker, Jenkins generalmente usa el UID 1000 si la cuenta de usuario de Jenkins dentro del contenedor está configurada con ese UID. Esto puede depender de la imagen de Docker específica que estés utilizando para Jenkins. Muchas imágenes de Docker, incluyendo la oficial de Jenkins, están configuradas para ejecutar Jenkins bajo un usuario que tiene el UID 1000 por defecto.
@@ -134,6 +142,9 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >```bash
 >docker run --name mi-jenkins -p [puerto host]:8080 -p [puerto agente conexion host]:50000 -v [directorio home en host]:/var/jenkins_home jenkins/jenkins:latest
 >```
+    
+![imagen](https://github.com/user-attachments/assets/f110468e-a53a-4b0b-abc6-4e38a6a8a565)
+
     
 **5. Consulta de la contraseña.**    
 >Para consultar la contraseña configurada debemos de ejecutar la consola bash dentro del contenedor. Para ello introducimos
