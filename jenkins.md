@@ -182,6 +182,9 @@ En un nodo esclavo de Jenkins, puedes tener múltiples agentes esclavos, cada un
 
 
 # 🗒️ OPCIONAL: Fichero docker compose.
+Por comodidad podemos configurar un fichero docker compose y usarlo con los comandos de docker para simplificar.
+
+
 ```yml
     version: '3'
     services:
