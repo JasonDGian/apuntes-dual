@@ -127,7 +127,7 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 
 **3. Otorgamos permisos necesarios en la carpeta al usuario Jenkins ( normalmente utiliza UID 1000 ).**   
 Con este comando otorgaremos la propiedad del directorio `jenkins` al usuario 1000 y grupo 1000, necesario para que el contenedor pueda usar el directorio adecuadamente.
-Para más información acerca de este apartado consultar [este documento](#usuario-jenkins.md). 
+Para más información acerca de este apartado consultar [este documento](usuario-jenkins.md). 
 >```bash
 >sudo chown -R 1000:1000 jenkins
 >```
