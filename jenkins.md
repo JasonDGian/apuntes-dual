@@ -142,9 +142,9 @@ Para más información acerca de este apartado consultar [este documento](usuari
 >```bash
 >docker run --name mi-jenkins -p [puerto host]:8080 -p [puerto agente conexion host]:50000 -v [directorio home en host]:/var/jenkins_home jenkins/jenkins:latest
 >```
+>   
+>![imagen](https://github.com/user-attachments/assets/f110468e-a53a-4b0b-abc6-4e38a6a8a565)
     
-![imagen](https://github.com/user-attachments/assets/f110468e-a53a-4b0b-abc6-4e38a6a8a565)
-
     
 **5. Consulta de la contraseña.**    
 >Para consultar la contraseña configurada debemos de ejecutar la consola bash dentro del contenedor. Para ello introducimos
@@ -159,8 +159,8 @@ Para más información acerca de este apartado consultar [este documento](usuari
 >```
 >Como resultado obtendremos por pantalla la contraseña perteneciente a la instancia de Jenkins actual.
 >    
->![image](https://github.com/user-attachments/assets/cb066c53-7b60-4e25-ba95-e88b28a92342)
-    
+>![imagen](https://github.com/user-attachments/assets/8fcf868b-62a0-4d90-b53a-4d2e4600a8ad)
+        
 **6. Con la contraseña preparada, abrimos la URL de acceso desde un navegador y nos autenticamos con ella.**      
 >    
 >![image](https://github.com/user-attachments/assets/87056e14-61b0-4735-b662-f8ebc4f4a227)
