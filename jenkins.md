@@ -171,6 +171,34 @@ Para más información acerca de este apartado consultar [este documento](usuari
 > Configuramos el usuario administrador, la url base y listo.
 > ![imagen](https://github.com/user-attachments/assets/d1a91129-310f-4840-9f26-bbd32fe9e4cf)
    
+
+
+
+# 🗒️ OPCIONAL: Fichero docker compose.
+Por comodidad podemos configurar un fichero docker compose y usarlo con los comandos de docker para simplificar.
+
+>[!CAUTION]
+> Este fichero emplea la configuración de acceso privilegiado `privileged: true` que supone un riesgo de seguridad y nunca deberá ser usada en entornos de produccion.
+
+```yml
+    version: '3'
+    services:
+        jenkins:
+            image: jenkins/jenkins 
+            ports:
+                - 8080:8080
+                - 50000:50000
+            container_name: jenkins
+            privileged: true
+            user: root
+            volumes:
+                - $PWD/jenkins_home:/var/jenkins_home 
+            networks:
+                - net
+    networks:
+        net: 
+```
+
    
 ---
    
@@ -197,26 +225,3 @@ En un nodo esclavo de Jenkins, puedes tener múltiples agentes esclavos, cada un
 ![imagen](https://github.com/user-attachments/assets/ed966825-acfc-4ba0-8bf6-d0f53b7883c5)
 
 
-
-# 🗒️ OPCIONAL: Fichero docker compose.
-Por comodidad podemos configurar un fichero docker compose y usarlo con los comandos de docker para simplificar.
-
-
-```yml
-    version: '3'
-    services:
-        jenkins:
-            image: jenkins/jenkins 
-            ports:
-                - 8080:8080
-                - 50000:50000
-            container_name: jenkins
-            privileged: true
-            user: root
-            volumes:
-                - $PWD/jenkins_home:/var/jenkins_home 
-            networks:
-                - net
-    networks:
-        net: 
-```
