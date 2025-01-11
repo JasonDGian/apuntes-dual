@@ -120,7 +120,7 @@ Con docker instalado en el equipo, seguimos los siguientes pasos:
 >mkdir -p jenkins/jenkins_home
 >```
 >
-![imagen](https://github.com/user-attachments/assets/a3489a05-0579-4e6a-8a96-ce8f7f00c2be)
+>![imagen](https://github.com/user-attachments/assets/a3489a05-0579-4e6a-8a96-ce8f7f00c2be)
 
 >[!NOTE]
 >En instalaciones tipicas, jenkins utiliza el directorio `/var/jenkins_home/` para almacenar sus datos y ficheros.
