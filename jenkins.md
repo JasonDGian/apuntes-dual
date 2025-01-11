@@ -225,3 +225,55 @@ En un nodo esclavo de Jenkins, puedes tener múltiples agentes esclavos, cada un
 ![imagen](https://github.com/user-attachments/assets/ed966825-acfc-4ba0-8bf6-d0f53b7883c5)
 
 
+## 📍 Crear tareas en Jenkins.
+Con el servicio preparado y corriendo abrimos el portal de jenkins y seguimos los siguientes pasos:
+1. Hacemos clic en `Nueva Tarea`
+2. Asignamos un nombre a la tarea y seleccionamos tipo de tarea.
+3. Establecemos parametros y configuraciones para la tarea.
+4. Comprobamos el éxito de la operacion.
+   
+---   
+   
+    
+1. Hacemos clic en `Nueva Tarea`
+En en el panel de control principal, pinchamos en `Nueva Tarea`.
+   
+![imagen](https://github.com/user-attachments/assets/b22e02f6-a1f6-483b-8844-34428a433948)
+    
+2. Asignamos un nombre a la tarea y seleccionamos tipo de tarea.
+
+    
+![imagen](https://github.com/user-attachments/assets/abf319bc-421b-4327-b270-5d19e2b71352)
+        
+3. Establecemos parámetros y configuraciones para la tarea.
+En este paso configuraremos:
+- Comportamiento del proceso de **Build**.
+- Configuración del origen del código fuente (_Source code_).
+- Disparadores de ejecución (_Triggers_).
+- Entorno de ejecución (_Environment_).
+- Pasos de construccion (_Build steps_).
+- Acciones a ejecutar tras la tarea.
+
+Entre estos parámetros estableceremos una descripción que complemente el nombre de la tarea, teniendo en cuenta que en futuro podremos necesitar identificar exactamente que operaciones realiza la tarea y en qué orden las ejecuta.
+       
+![imagen](https://github.com/user-attachments/assets/49cd34a7-8795-48c1-a9ab-860305e6826b)
+      
+Configuramos una acción de saludo por terminal.
+    
+![imagen](https://github.com/user-attachments/assets/acb543e4-a585-41ed-8bcd-814a4ea7f0f8)
+    
+4. Comprobamos el éxito de la operación.
+Para comprobar el éxito de la operación pinchamos en `Panel de Control` 
+    
+![imagen](https://github.com/user-attachments/assets/3023b99f-27be-448b-a36d-ae8b728b016e)
+     
+Aparecerá la tarea en la lista de tareas.
+    
+![imagen](https://github.com/user-attachments/assets/917b9481-bb19-4e9f-95a7-fc8a67cf23de)
+
+Al hacer click sobre la tarea, entramos en la vista dedicada. Aquí podremos hacer click sobre `Construir Ahora`, y veremos aparecer un listado de ejecuciones de la tarea.
+![imagen](https://github.com/user-attachments/assets/376a6343-97d1-4af5-900d-d1858792369f)
+   
+Pinchando sobre una de las ejecuciones podremos ver el resultado de su ejecución.   
+![imagen](https://github.com/user-attachments/assets/c5684f73-1da1-43a6-8761-e5320582b6ec)
+
