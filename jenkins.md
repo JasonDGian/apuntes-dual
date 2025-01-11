@@ -161,17 +161,19 @@ Para más información acerca de este apartado consultar [este documento](usuari
 >    
 >![imagen](https://github.com/user-attachments/assets/8fcf868b-62a0-4d90-b53a-4d2e4600a8ad)
         
-**6. Con la contraseña preparada, abrimos la URL de acceso desde un navegador y nos autenticamos con ella.**      
+**6. Con la contraseña preparada, configuramos la instancia inicial.**      
 >    
 >![image](https://github.com/user-attachments/assets/87056e14-61b0-4735-b662-f8ebc4f4a227)
 >
 > Procedemos a instalar los plugins básicos seguidos de los plugins especificos para nuestra aplicacion que puedan ser necesarios. 
 > ![imagen](https://github.com/user-attachments/assets/d19e9460-a75c-45cd-b224-e977721208b7)
-
-
-
+>
+> Configuramos el usuario administrador, la url base y listo.
+> ![imagen](https://github.com/user-attachments/assets/d1a91129-310f-4840-9f26-bbd32fe9e4cf)
+   
+   
 ---
-
+   
 # 📌 Introduccion a Jenkins.
 
 ## 📓 ¿Qué es Jenkins?
