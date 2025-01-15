@@ -41,33 +41,12 @@ Al hacer click sobre la tarea, entramos en la vista dedicada. Aquí podremos hac
    
 Pinchando sobre una de las ejecuciones podremos ver el resultado de su ejecución.   
 ![imagen](https://github.com/user-attachments/assets/c5684f73-1da1-43a6-8761-e5320582b6ec)
-
-
-
-
-
-# 📌 Uso de variables en tareas.
-En los scripts que escribimos para las tareas de Jenkins podemos hacer uso de variables y variables de entorno de la terminal que el servicio emplea.
-
-#### 🧮 Ejemplo de uso.   
-En la sección ejecutar escribimos nuestro script, declarando una variable personalizada que a su vez invoca la variable `DATE` con el switch `%r`.
-
-```bash
-AHORA=$(date + "%r)
-echo "La hora actual es: $AHORA" > /tmp/ahora
-```   
    
-**Ejemplo en tarea**.
-   
-![image](https://github.com/user-attachments/assets/f1ece043-bd30-4be5-ad6b-803c5a6bec91)
+---  
     
-**Salida de la consola**.
-    
-![image](https://github.com/user-attachments/assets/a6b7a69f-4233-4471-96af-4fd88a50b3a2)
-
-
-# 📌 Ejecución de Scripts desde el contenedor Docker.
-Con Jenkins podemos hacer uso de scripts que hayamos definido y almacenado en el contenedor Docker que sostiene el servicio. Para hacer esto, el proceso normal es el siguiente:
+# 📌 Tareas de ejecución de Scripts desde el contenedor Docker.
+Con Jenkins podemos hacer uso de scripts que hayamos definido y almacenado en el contenedor Docker que sostiene el servicio.    
+Para hacer esto, el proceso normal es el siguiente:
 1. Crear un script o 'fichero guión'.
 2. Otorgar permisos de ejecución al fichero.
 3. Copiar el fichero en el contenedor docker.
@@ -115,17 +94,56 @@ Con Jenkins podemos hacer uso de scripts que hayamos definido y almacenado en el
 >![image](https://github.com/user-attachments/assets/81779c1e-5cf1-4bb2-aab1-90aa72a3009f)
 >
 
-# 📌 Sesiones de ejecución de Jenkins.
-Cuando una tarea de Jenkins ejecuta instrucciones en la terminal de Shell, eso supone una sesión de ejecucion. Cuando en esta sesión de ejecución de tarea se invoca un script almacenado, este script lanzará una nueva sesión. Esto dará resultado a dos sesiones de ejecución distintas que no comunican entre ellas, de modo que las variables que una sesión exporta no serán visibles por la otra. Cada script lanzado independiente supondrá una sesión distinta.
+
+
+
+    
+---   
+    
+
+
+# 📌 Uso de variables en tareas y scripts.
+Existen dos tipos de variables que podemos usar en las tareas. 
+1. Variables de entorno.
+2. Variables de sesión.
+     
+Para poder hacer uso de las variables correctamente es conveniente comprender como funciona el entorno de ejecución y las sesiones de ejecución.
+
+## 📍 Sesiones y Entorno de ejecución de Jenkins.
+Cuando una tarea de Jenkins ejecuta instrucciones en la terminal de Shell, se crea una sesión de ejecución dentro del entorno. Al invocar un script almacenado en esta sesión, se lanza una nueva sesión dentro del mismo entorno. Esto da como resultado dos sesiones de ejecución distintas que no se comunican entre ellas, de modo que las variables de una sesión no serán visibles para la otra. Cada script lanzado independientemente crea una sesión distinta.   
+  
+Existen un tipo de variables llamadas `Variables de entorno` que transcienden las sesiones de ejecucion y son accesiblas por todas ellas. Fungen de "valores globales" que todas las sesiones pueden consultar.
+
+![image](https://github.com/user-attachments/assets/2051bda1-63d9-46fe-b205-aec713d3f1df)
+
+<!-- ![image](https://github.com/user-attachments/assets/ad230934-fd59-4bfa-8afa-097dbf939a1c) -->
+
+
+## 📍 Comunicar valores de una sesión a otra.
+Si queremos definir variables en una sesión y que estas puedan ser utilizadas en otra (por ejemplo; definir una variable y utilizar su valor en un script) podemos hacerlo de dos maneras.
+- Exportando la variable al entorno de ejecución.
+- Pasando las variables como parametros al script.
+
+### 🔸 Exportar variables al entorno.
+Para exportar variables al entorno de ejecución definiremos las variables de manera habitual, pero añadiremos la palabra clave `export` como prefijo.
    
-![image](https://github.com/user-attachments/assets/8bf094b6-d5e3-4736-ad9e-095aa56fb537)
+**Ejemplo:**
+```bash
+export nombre="David"
+export curso="Jenkins"
+```
 
-<!-- ## Esto NO funcionará.
-![image](https://github.com/user-attachments/assets/0ce2ca27-88f7-46d8-b9ae-97a6f86c52f9)
--->
+**Esto NO funcionará.**    
+>Variables locales de sesión no parametrizadas.
+>![image](https://github.com/user-attachments/assets/0ce2ca27-88f7-46d8-b9ae-97a6f86c52f9)
 
-## 📍 Recibiendo valores paramertizados en scripts.
-Para resolver el problema de la no-comunicación entre sesiónes, en los scripts que vamos a almacenar en el contenedor, podemos configurar parametros de entrada. Al definir parametros de entrada podremos pasar los valores definidos en una sesión a un script para que este los pueda emplear en su propria sesión.
+**Esto SI funcionará**    
+>Variables exportadas a entorno.
+>![image](https://github.com/user-attachments/assets/792d64e7-7bb4-4a13-85b5-79ada42e69ea)
+   
+   
+### 🔸 Pasar las variables como parametro.
+En los scripts que vamos a almacenar en el contenedor Docker, podemos configurar parametros de entrada para que este pueda recibir valores de otras sesiones y los pueda emplear en su propria sesión.
    
 **Para hacerlo seguimos la sintaxis**:   
 ```bash
@@ -151,9 +169,41 @@ echo "Las clases han terminado."
 #Final del script.
 ```
 
-#### 🧮 Ejemplo de incovación con parametros.
+#### 🧮 Ejemplo de invocación con parametros.
 En ese ejemplo invocamos el script pasandole dos variables que asignamos en la sesión inicial de la tarea de Jenkins.
 ![image](https://github.com/user-attachments/assets/d81dd79c-048d-4479-ba08-676085a24826)
+
+
+
+<!--
+
+
+
+----  
+
+En los scripts que escribimos para las tareas de Jenkins podemos hacer uso de variables y variables de entorno de la terminal que el servicio emplea.
+
+#### 🧮 Ejemplo de uso.   
+En la sección ejecutar escribimos nuestro script, declarando una variable personalizada que a su vez invoca la variable `DATE` con el switch `%r`.
+
+```bash
+AHORA=$(date + "%r)
+echo "La hora actual es: $AHORA" > /tmp/ahora
+```   
+   
+**Ejemplo en tarea**.
+   
+![image](https://github.com/user-attachments/assets/f1ece043-bd30-4be5-ad6b-803c5a6bec91)
+    
+**Salida de la consola**.
+    
+![image](https://github.com/user-attachments/assets/a6b7a69f-4233-4471-96af-4fd88a50b3a2)
+
+
+
+
+-->
+
 
 
 
