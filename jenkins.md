@@ -11,7 +11,8 @@ Esta práctica permite detectar y corregir errores rápidamente, mejorando la ca
 6. Una vez obtenida una construcción, se realizan una bateria de pruebas.
 7. Con los resultados obtenidos, se informa al equipo de desarrollo de la calidad del código subido.
    
-![image](https://github.com/user-attachments/assets/5f0dac98-b200-46fd-8195-d0b765f9e6d0)
+![image](https://github.com/user-attachments/assets/36968fbd-905a-44d3-85ac-c3c3489c705a)
+
     
 ### 🗒️ Acerca del repositorio central.
 En una configuración típica de integración continua (CI), el repositorio de código no reside en el servidor de CI. Generalmente, el repositorio de código está alojado en 
