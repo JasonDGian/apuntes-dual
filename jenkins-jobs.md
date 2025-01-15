@@ -75,7 +75,7 @@ Con Jenkins podemos hacer uso de scripts que hayamos definido y almacenado en el
    
    
 #### 🧮 Ejemplo de creación y ejecución.
-Como primer paso creamos un script de bash, en este caso un simple bucle.
+1. Como primer paso creamos un script de bash, en este caso un simple bucle.
 ```bash
 #!/bin/bash
 
@@ -95,27 +95,26 @@ done
 echo "Las clases han terminado."
 ```
 
-A continuación otorgamos los permisos de ejecución sobre el script.
+2. A continuación otorgamos los permisos de ejecución sobre el script.
 ```bash
 chmod +x script.sh
 ```
 
-Ahora deberemos copiar nuestro fichero en el contenedor Docker para que este pueda ejecutarlo.   
+3. Ahora deberemos copiar nuestro fichero en el contenedor Docker para que este pueda ejecutarlo.   
 Para ello usaremos el siguiente comando con la siguiente sintaxis:    
 `docker cp <nombre script> <nombre contenedor>:<ubicacion> `  
 
 ```bash
 docker cp script.sh mi-jenkins:/opt
 ```
+   
+4. Ahora crearemos una tarea que invoque el script que hemos creado.
+Simplemente se trata de invocar el script desde la sección de **Ejecutar linea de comandos** de la tarea Jenkins.
+    
+![image](https://github.com/user-attachments/assets/81779c1e-5cf1-4bb2-aab1-90aa72a3009f)
 
-**Qué hace exactamente el comando?**   
-El comando `docker cp script.sh mi-jenkins:/opt`  se utiliza para copiar un archivo del sistema host a un contenedor Docker en ejecución.
 
-En este caso:
-- `docker cp`: Es el comando de Docker para copiar archivos o directorios entre el sistema host y un contenedor.
-- `script.sh`: Es el archivo que deseas copiar, que se encuentra en el sistema host.
-- `mi-jenkins`: Es el nombre (o ID) del contenedor de Docker en el que deseas copiar el archivo.
-- `/opt`: Es el directorio dentro del contenedor jenkins donde deseas copiar script.sh.
-
-Así que, este comando copiará el archivo script.sh desde tu sistema host al directorio /opt dentro del contenedor jenkins.
+# 📌 Sesiones de ejecución de Jenkins y terminales.
+A la hora de invocar un script en jenkins, se crearán dos sesiones de ejecución distintas, una será la de Jenkins y otra la de la terminal que el script invoca.
+![image](https://github.com/user-attachments/assets/7814bde5-81ae-44dd-926d-43d0ef1d678e)
 
