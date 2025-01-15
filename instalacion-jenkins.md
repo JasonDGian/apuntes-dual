@@ -148,3 +148,27 @@ Por comodidad podemos configurar un fichero docker compose y usarlo con los coma
     networks:
         net: 
 ```
+
+### 🔸 Comandos de docker-compose.
+Siempre que lancemos los comandos de docker-compose nos debemos situar en el directorio de trabajo donde este el fichero `.yml`.
+
+**Levantar un docker-compose:**
+```bash
+docker-compose up -d
+```
+
+**Parar un contenedor:**
+```bash
+docker-compose stop <nombre>
+```
+
+**Inicio y reinicio de un contenedor:**
+```bash
+docker-compose start <nombre>
+docker-compose restart <nombre>
+```
+
+**Consultar los logs:**
+```bash
+docker-compose logs -f --tail=100 <nombre>
+```
