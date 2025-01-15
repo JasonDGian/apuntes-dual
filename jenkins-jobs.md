@@ -64,3 +64,49 @@ echo "La hora actual es: $AHORA" > /tmp/ahora
 **Salida de la consola**.
     
 ![image](https://github.com/user-attachments/assets/a6b7a69f-4233-4471-96af-4fd88a50b3a2)
+
+
+# 📌 Ejecución de Scripts desde el contenedor Docker.
+Con Jenkins podemos hacer uso de scripts que hayamos definido y almacenado en el contenedor Docker que sostiene el servicio. Para hacer esto, el proceso normal es el siguiente:
+1. Crear un script o 'fichero guión'.
+2. Otorgar permisos de ejecución al fichero.
+3. Copiar el fichero en el contenedor docker.
+4. Invocar el script desde la tarea de Jenkins.
+   
+   
+#### 🧮 Ejemplo de creación y ejecución.
+Como primer paso creamos un script de bash, en este caso un simple bucle.
+```bash
+#!/bin/bash
+
+nombre="David Jason"
+curso="Jenkins"
+
+# Inicio del loop.
+for i in 1 2 3 4 5 6 7 8
+do
+    if [ $i -eq 8 ]
+    then
+        sleep 10
+        echo "A descansar de clase $nombre."
+    fi
+    echo "Clase Nº $i"
+done
+echo "Las clases han terminado."
+```
+
+A continuación otorgamos los permisos de ejecución sobre el script.
+```bash
+chmod +x script.sh
+```
+
+Ahora deberemos copiar nuestro fichero en el contenedor Docker para que este pueda ejecutarlo.   
+Para ello usaremos el siguiente comando con la siguiente sintaxis:
+`docker cp <nombre script> <nombre contenedor>:<ubicacion> `  
+
+```bash
+docker cp script.sh jenkins:/opt
+```
+
+
+En los contenedores Docker podemos crear scripts para luego invocarlos desde Jenkins.
