@@ -1,4 +1,4 @@
-# 📌 Crear un Job
+# 📌 Crear un Job o tarea.
     
 1. Hacemos clic en `Nueva Tarea`
 En en el panel de control principal, pinchamos en `Nueva Tarea`.
@@ -46,7 +46,7 @@ Pinchando sobre una de las ejecuciones podremos ver el resultado de su ejecució
 
 
 
-# 📌 Uso de variables en Jobs.
+# 📌 Uso de variables en tareas.
 En los scripts que escribimos para las tareas de Jenkins podemos hacer uso de variables y variables de entorno de la terminal que el servicio emplea.
 
 #### 🧮 Ejemplo de uso.   
@@ -75,12 +75,66 @@ Con Jenkins podemos hacer uso de scripts que hayamos definido y almacenado en el
    
    
 #### 🧮 Ejemplo de creación y ejecución.
-1. Como primer paso creamos un script de bash, en este caso un simple bucle.
+##### 1. Creamos un fichero guión o script.
+>
+>```bash
+>#!/bin/bash
+>
+>nombre="David Jason"
+>curso="Jenkins"
+>
+># Inicio del loop.
+>for i in 1 2 3 4 5 6 7 8
+>do
+>    if [ $i -eq 8 ]
+>    then
+>        sleep 10
+>        echo "A descansar de clase $nombre."
+>    fi
+>    echo "Clase Nº $i"
+>done
+>echo "Las clases han terminado."
+>```
+
+##### 2. Otorgamos los permisos de ejecución sobre el script.
+>```bash
+>chmod +x script.sh
+>```
+
+##### 3. Copiamos nuestro fichero en el contenedor Docker para que este pueda ejecutarlo.   
+>Para ello usaremos un comando con la siguiente sintaxis:    
+>`docker cp <nombre script> <nombre contenedor>:<ubicacion> `  
+>
+>```bash
+>docker cp script.sh mi-jenkins:/opt
+>```
+   
+##### 4. Creamos una tarea que invoque el script que hemos creado.   
+>Simplemente se trata de invocar el script desde la sección de **Ejecutar linea de comandos** de la tarea Jenkins.
+>    
+>![image](https://github.com/user-attachments/assets/81779c1e-5cf1-4bb2-aab1-90aa72a3009f)
+>
+
+# 📌 Sesiones de ejecución de Jenkins.
+Cuando una tarea de Jenkins ejecuta instrucciones en la terminal de Shell, eso supone una sesión de ejecucion. Cuando en esta sesión de ejecución de tarea se invoca un script almacenado, este script lanzará una nueva sesión. Esto dará resultado a dos sesiones de ejecución distintas que no comunican entre ellas, de modo que las variables que una sesión exporta no serán visibles por la otra. Cada script lanzado independiente supondrá una sesión distinta.
+   
+![image](https://github.com/user-attachments/assets/8bf094b6-d5e3-4736-ad9e-095aa56fb537)
+
+<!-- ## Esto NO funcionará.
+![image](https://github.com/user-attachments/assets/0ce2ca27-88f7-46d8-b9ae-97a6f86c52f9)
+-->
+
+## 📍 Recibiendo valores paramertizados en scripts.
+Para resolver el problema de la no-comunicación entre sesiónes, en los scripts que vamos a almacenar en el contenedor, podemos configurar parametros de entrada. Al definir parametros de entrada podremos pasar los valores definidos en una sesión a un script para que este los pueda emplear en su propria sesión.
+   
+**Para hacerlo seguimos la sintaxis**:   
 ```bash
 #!/bin/bash
 
-nombre="David Jason"
-curso="Jenkins"
+# Parametro de entrada 1 - para el nombre.
+nombre=$1
+# Parametro de entrada 2 - para el curso.
+curso=$2
 
 # Inicio del loop.
 for i in 1 2 3 4 5 6 7 8
@@ -93,30 +147,19 @@ do
     echo "Clase Nº $i"
 done
 echo "Las clases han terminado."
+
+#Final del script.
 ```
 
-2. A continuación otorgamos los permisos de ejecución sobre el script.
-```bash
-chmod +x script.sh
-```
-
-3. Ahora deberemos copiar nuestro fichero en el contenedor Docker para que este pueda ejecutarlo.   
-Para ello usaremos el siguiente comando con la siguiente sintaxis:    
-`docker cp <nombre script> <nombre contenedor>:<ubicacion> `  
-
-```bash
-docker cp script.sh mi-jenkins:/opt
-```
-   
-4. Ahora crearemos una tarea que invoque el script que hemos creado.
-Simplemente se trata de invocar el script desde la sección de **Ejecutar linea de comandos** de la tarea Jenkins.
-    
-![image](https://github.com/user-attachments/assets/81779c1e-5cf1-4bb2-aab1-90aa72a3009f)
+#### 🧮 Ejemplo de incovación con parametros.
+En ese ejemplo invocamos el script pasandole dos variables que asignamos en la sesión inicial de la tarea de Jenkins.
+![image](https://github.com/user-attachments/assets/d81dd79c-048d-4479-ba08-676085a24826)
 
 
-# 📌 Sesiones de ejecución de Jenkins.
-Cuando una tarea de Jenkins ejecuta instrucciones en la terminal de Shell, eso supone una sesión de ejecucion. Cuando en esta sesión de ejecución de tarea se invoca un script almacenado, este script lanzará una nueva sesión. Esto dará resultado a dos sesiones de distintas que no comunican entre ellas, de modo que las variables que una sesión exporta no serán visibles por la otra. Cada script lanzado independiente supondrá una sesión distinta.
-   
-![image](https://github.com/user-attachments/assets/8bf094b6-d5e3-4736-ad9e-095aa56fb537)
+
+
+
+
+
 
 
