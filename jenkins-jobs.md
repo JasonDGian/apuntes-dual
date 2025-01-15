@@ -227,3 +227,11 @@ Aquí es donde introducimos los valores que deseamos para la ejecución que vamo
 
 Este tipo de ejecución es mucho mas efectivo que modificar las variables en la terminal cada vez que deseamos probar valores distintos.
 ![image](https://github.com/user-attachments/assets/95507fbf-aa70-4c90-9b2b-f86620e0e20c)
+
+<!-- ## 📍 Tipos de parametros.
+Al parametrizar las teareas podemos seleccionar distintos tipos de parametros.
+- Cadena de texto: El usuario debe introducir el texto a mano.
+- Seleccion de valores: El usuario elige un valore de un listado.
+- 
+
+-->
