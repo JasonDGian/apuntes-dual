@@ -204,12 +204,26 @@ echo "La hora actual es: $AHORA" > /tmp/ahora
 
 -->
 
+# 📌 Tareas parametrizadas en Jenkins.
+Las tareas parametrizadas en Jenkins pueden recibir valores de entrada que luego se asignan como variables de entorno dentro del entorno de ejecución de la tarea. Esto permite que los scripts y comandos dentro de la tarea utilicen estos valores, proporcionando flexibilidad y personalización en la ejecución de las tareas.
 
+![image](https://github.com/user-attachments/assets/19b6e626-c999-41a3-b12e-da0cf67a210b)
 
+## 📍 Como configurar los parametros de una tarea.
+Para que una tarea de Jenkins esté parametrizada, durante su configuración debemos activar la opción `Esta ejecución debe parametrizarse`.
+   
+![image](https://github.com/user-attachments/assets/021246a4-ea3f-49dd-909a-e463aa7680aa)
 
+Al activar la opción y seleccionar el tipo de parámetro deseado aparecerá el formulario de configuración de parámetro.   
+**IMPORTANTE:** El campo `nombre` hace referencia al nombre que recibirá la variable en el entorno de ejecución.
+   
+![image](https://github.com/user-attachments/assets/6f18901b-f10e-4959-9294-01bdb5fc8501)
+   
+Una vez rellenado el formulario tantas veces como parametros deseamos configurar, pincharemos en guardar y podremos realizar las pruebas de ejecución.
+   
+Pinchando en `Build with Parameters` aparecerá la ventana de configuración de parámetros para la ejecución de la tarea con los valores por defecto.   
+Aquí es donde introducimos los valores que deseamos para la ejecución que vamos a lanzar.
+![image](https://github.com/user-attachments/assets/a8f078e3-4505-4c83-9fbd-6ebf6ab1f4c4)
 
-
-
-
-
-
+Este tipo de ejecución es mucho mas efectivo que modificar las variables en la terminal cada vez que deseamos probar valores distintos.
+![image](https://github.com/user-attachments/assets/95507fbf-aa70-4c90-9b2b-f86620e0e20c)
