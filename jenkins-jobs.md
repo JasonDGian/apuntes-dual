@@ -9,7 +9,12 @@ En la sección ejecutar escribimos nuestro script, declarando una variable perso
 ```bash
 AHORA=$(date + "%r)
 echo "La hora actual es: $AHORA" > /tmp/ahora
-```
-
+```   
+   
+**Ejemplo en tarea**.
+   
 ![image](https://github.com/user-attachments/assets/f1ece043-bd30-4be5-ad6b-803c5a6bec91)
-
+    
+**Salida de la consola**.
+    
+![image](https://github.com/user-attachments/assets/a6b7a69f-4233-4471-96af-4fd88a50b3a2)
