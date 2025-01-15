@@ -114,7 +114,9 @@ Simplemente se trata de invocar el script desde la sección de **Ejecutar linea 
 ![image](https://github.com/user-attachments/assets/81779c1e-5cf1-4bb2-aab1-90aa72a3009f)
 
 
-# 📌 Sesiones de ejecución de Jenkins y terminales.
-A la hora de invocar un script en jenkins, se crearán dos sesiones de ejecución distintas, una será la de Jenkins y otra la de la terminal que el script invoca.
-![image](https://github.com/user-attachments/assets/7814bde5-81ae-44dd-926d-43d0ef1d678e)
+# 📌 Sesiones de ejecución de Jenkins.
+Cuando una tarea de Jenkins ejecuta instrucciones en la terminal de Shell, eso supone una sesión de ejecucion. Cuando en esta sesión de ejecución de tarea se invoca un script almacenado, este script lanzará una nueva sesión. Esto dará resultado a dos sesiones de distintas que no comunican entre ellas, de modo que las variables que una sesión exporta no serán visibles por la otra. Cada script lanzado independiente supondrá una sesión distinta.
+   
+![image](https://github.com/user-attachments/assets/8bf094b6-d5e3-4736-ad9e-095aa56fb537)
+
 
