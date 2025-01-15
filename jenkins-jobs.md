@@ -101,12 +101,21 @@ chmod +x script.sh
 ```
 
 Ahora deberemos copiar nuestro fichero en el contenedor Docker para que este pueda ejecutarlo.   
-Para ello usaremos el siguiente comando con la siguiente sintaxis:
+Para ello usaremos el siguiente comando con la siguiente sintaxis:    
 `docker cp <nombre script> <nombre contenedor>:<ubicacion> `  
 
 ```bash
-docker cp script.sh jenkins:/opt
+docker cp script.sh mi-jenkins:/opt
 ```
 
+**Qué hace exactamente el comando?**   
+El comando `docker cp script.sh mi-jenkins:/opt`  se utiliza para copiar un archivo del sistema host a un contenedor Docker en ejecución.
 
-En los contenedores Docker podemos crear scripts para luego invocarlos desde Jenkins.
+En este caso:
+- `docker cp`: Es el comando de Docker para copiar archivos o directorios entre el sistema host y un contenedor.
+- `script.sh`: Es el archivo que deseas copiar, que se encuentra en el sistema host.
+- `mi-jenkins`: Es el nombre (o ID) del contenedor de Docker en el que deseas copiar el archivo.
+- `/opt`: Es el directorio dentro del contenedor jenkins donde deseas copiar script.sh.
+
+Así que, este comando copiará el archivo script.sh desde tu sistema host al directorio /opt dentro del contenedor jenkins.
+
