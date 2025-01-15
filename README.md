@@ -18,8 +18,19 @@ Jenkins es una herramienta de código abierto diseñada para facilitar los proce
 [Guía de instalación.](/instalacion-jenkins.md)
    
 ## 📌 El usuario Jenkins.
+Cuando creamos un contenedor de Jenkins en un sistema Linux, uno de los pasos esenciales es garantizar que el contenedor tenga los permisos necesarios para leer y escribir en el directorio montado como volumen.
+   
+[Usuario Jenkins en Linux.](/usuario-jenkins.md)
+   
 ## 📌 Cómo crear tareas de Jenkins.
-## 📌 Sesiones de ejecucion en jenkins.
+En estos apuntes se recoge:
+- Como crear tareas básicas de Jenkins.
+- Como invocar scripts almacenados en el contendor.
+- Uso de variables en las tareas y scripts.
+    - Entorno y sesiones de ejecución de Jenkins.
+- Como crear tareas parametrizadas.
+
+[Jenkins Jobs](/jenkins-jobs.md)
 
 
 
