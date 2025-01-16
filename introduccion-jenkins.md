@@ -30,5 +30,13 @@ Con el servicio preparado y corriendo abrimos el portal de jenkins y seguimos lo
    
 Para más información consulta [este documento](jenkins-jobs.md).
 
----   
+
+# 📌 Workspace de Jenkins.
+En Jenkins, el "workspace" es el área de trabajo donde se descargan y manipulan los archivos del proyecto durante la ejecución de una construcción (build). Cuando Jenkins realiza un "pull" de un repositorio, crea un directorio dentro del workspace para esa tarea específica. Este directorio contiene todos los archivos y subdirectorios necesarios para la tarea.
+
+El workspace actúa como un entorno aislado donde se llevan a cabo las operaciones de construcción, pruebas y despliegue, asegurando que cada tarea tenga acceso a una copia limpia y actualizada del código fuente. Esto permite que múltiples tareas se ejecuten simultáneamente sin interferencias entre ellas, incluso si están trabajando en el mismo repositorio.
+    
+![image](https://github.com/user-attachments/assets/23753e1e-996b-4379-9702-56c2e4d37d8b)
+
+
    
