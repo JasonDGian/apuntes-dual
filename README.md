@@ -8,6 +8,7 @@ La integración continua (CI) es una práctica de desarrollo de software que con
 
 ## 📌 Que es jenkins.
 Jenkins es una herramienta de código abierto diseñada para facilitar los procesos de integración continua (CI) y entrega continua (CD) en el desarrollo de software.   
+- Workspace de Jenkins.
    
 [Introduccion a Jenkins](/introduccion-jenkins.md)
 
