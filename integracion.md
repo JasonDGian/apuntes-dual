@@ -33,9 +33,38 @@ En la página buscaremos la entrada para **Maven** y pincharemos en `Añadir Mav
 ![image](https://github.com/user-attachments/assets/da17a677-2c13-41dc-8aa0-20b527c3108f)
 
  ## 📍 Hacer pull de un repositorio de GitHub.
+Creamos una nueva tarea, y seleccionamos el tipo de tarea de estilo libre.
+    
+![image](https://github.com/user-attachments/assets/572e7d23-f935-4f3a-9fe1-64acc923a64b)
+    
+![image](https://github.com/user-attachments/assets/f502586e-e98b-48a9-8850-d22587fcca51)
+   
+     
+En la pestaña de configuración general de la tarea buscamos la sección de **Configurar el origen del código fuente**.      
+Aquí seleccionamos `Git` como opción de origen y configuramos los parametros necesarios.
+- URL de repositorio.
+- Credenciales (para repositorios privados)
+- Branch
+       
+![image](https://github.com/user-attachments/assets/40909841-7c96-4f38-9fdf-351d44737169)
 
-Creamos un nuevo job de estilo libre.
-Configuramos el origen del código fuente.
+
+ ## 📍 Comprobación del éxito de la operación pull.
+ Para comprobar que la tarea es capaz de clonar el repositorio vamos a lanzarla y a consultar el output de la consola.
+      
+![image](https://github.com/user-attachments/assets/e24a0c3c-6650-4f9b-8c80-b839c6d292fe)
+
+
+
+# 📌 Workspace de Jenkins.
+En Jenkins, el "workspace" es el área de trabajo donde se descargan y manipulan los archivos del proyecto durante la ejecución de una construcción (build). Cuando Jenkins realiza un "pull" de un repositorio, crea un directorio dentro del workspace para esa tarea específica. Este directorio contiene todos los archivos y subdirectorios necesarios para la tarea.
+
+El workspace actúa como un entorno aislado donde se llevan a cabo las operaciones de construcción, pruebas y despliegue, asegurando que cada tarea tenga acceso a una copia limpia y actualizada del código fuente. Esto permite que múltiples tareas se ejecuten simultáneamente sin interferencias entre ellas, incluso si están trabajando en el mismo repositorio.
+    
+![image](https://github.com/user-attachments/assets/23753e1e-996b-4379-9702-56c2e4d37d8b)
+
+
+      
 
 
 
