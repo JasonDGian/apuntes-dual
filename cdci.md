@@ -2,16 +2,21 @@
 La integración continua (CI) es una práctica de desarrollo de software que consiste en integrar y verificar automáticamente el código nuevo en un repositorio central varias veces al día. 
 Esta práctica permite detectar y corregir errores rápidamente, mejorando la calidad del software y facilitando la colaboración entre desarrolladores.
 
-## 📍 ¿Cómo funciona la integración continua?
-1. Los desarrolladores trabajan en conjunto en una aplicación.
-2. Modifican el código separadamente y aplican cambios a distintas partes de la aplicacion.
-3. Esos cambios los envían a un repositorio de código fuente central, compartido.
-4. Desde el repositorio, el código llega al Servidor CI (lo clona el servidor).
-5. Dentro del servidor se hace la construccion o 'build' del código.
-6. Una vez obtenida una construcción, se realizan una bateria de pruebas.
-7. Con los resultados obtenidos, se informa al equipo de desarrollo de la calidad del código subido.
+## 📍 ¿Cómo funciona la integración continua / despiegue continuo?
+1. **Trabajo colaborativo:** Los desarrolladores colaboran en una aplicación.
+2. **Modificación del código:** Cada desarrollador modifica el código por separado y aplica cambios a diferentes partes de la aplicación.
+3. **Envío al repositorio:** Los cambios se envían a un repositorio de código fuente central y compartido (normalmente usando sistemas como Git).
+4. **Servidor CI:** El servidor CI clona el repositorio y obtiene el nuevo código.
+5. **Construcción del código:** Dentro del servidor, se realiza la construcción (o 'build') del código.
+6. **Pruebas unitarias:** Una vez obtenida la construcción, se realizan una serie de pruebas unitarias.
+7. **Despliegue en entorno de pruebas:** Si la compilación pasa todas las pruebas, el código se despliega en un entorno de pruebas.
+8. **Pruebas de integración y de despliegue:** En el entorno de pruebas, el código pasa por otra batería de pruebas (de integración y de despliegue).
+9. **Despliegue en producción:** Si el despliegue de pruebas pasa todas las pruebas con éxito, se despliega en el entorno de producción.
+
    
 ![image](https://github.com/user-attachments/assets/36968fbd-905a-44d3-85ac-c3c3489c705a)
+
+
 
     
 ### 🗒️ Acerca del repositorio central.
@@ -45,7 +50,10 @@ Despliegue sin intervención manual, utilizando herramientas y scripts que autom
 
 # 📌 Antes de comenzar: ¿Qué es el Despliegue Continuo?
 El despliegue continuo es una práctica en el desarrollo de software que consiste en automatizar la liberación de cada compilación exitosa al entorno de producción, una vez que ha pasado todas las pruebas necesarias. Esta práctica asegura entregas rápidas, consistentes y confiables, optimizando el flujo de desarrollo.
-    
+   
+      
+![image](https://github.com/user-attachments/assets/c0cf11fc-e539-4727-8506-722ddd290eb6)
+     
 >[!TIP]
 >El conjunto de Integracion Continua con Despliegue continuo se conoce como `CI/CD`
     
