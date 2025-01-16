@@ -56,7 +56,7 @@ Imaginemos que tienes un trabajo llamado `JobX`:
     
 ![image](https://github.com/user-attachments/assets/780504ae-aa5d-4168-94e2-79cefae4cb43)
 
-## Resumen
-El "workspace" en Jenkins es un área de trabajo aislada específica para cada trabajo, donde se descargan y manipulan los archivos durante la ejecución. El historial de ejecuciones se guarda en un directorio separado, asegurando que cada trabajo tenga acceso a un espacio limpio y actualizado para sus operaciones.
+>**Resumen**:    
+>El "workspace" en Jenkins es un área de trabajo aislada específica para cada trabajo, donde se descargan y manipulan los archivos durante la ejecución. El historial de ejecuciones se guarda en un directorio separado, asegurando que cada trabajo tenga acceso a un espacio limpio y actualizado para sus operaciones.
 
    
