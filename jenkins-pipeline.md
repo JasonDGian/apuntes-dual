@@ -14,6 +14,52 @@ Por ejemplo, una pipeline podría tener etapas como "Construir", "Probar" y "Des
      
 ![image](https://github.com/user-attachments/assets/a717257f-de34-4cdb-80a2-0099a43723c2)
 
+## 📍 Tipos de Pipelines en Jenkins - Pipeline Declarativa.
+La pipeline declarativa en Jenkins utiliza una sintaxis más estructurada y fácil de leer, lo que facilita la creación y el mantenimiento de pipelines complejos.
+    
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
+    }
+}
+```    
+
+## 📍 Tipos de Pipelines en Jenkins - Pipeline Guinizada o Scripted Pipepline.
+La pipeline scripted ofrece mayor flexibilidad y control, pero a cambio de una mayor complejidad en la lectura y mantenimiento.
+    
+```groovy
+node {
+    stage('Build') {
+        echo 'Building...'
+    }
+    stage('Test') {
+        echo 'Testing...'
+    }
+    stage('Deploy') {
+        echo 'Deploying...'
+    }
+}
+```
+**En resumen:**
+- **Declarative Pipeline:** Más sencilla y estructurada, ideal para la mayoría de los casos y equipos grandes.
+- **Scripted Pipeline:** Más flexible y poderosa, adecuada para casos que requieran lógica personalizada o flujos complejos.
+
 
 # 📌 Crear una pipeline.
 Para crear una pipeline lo primero que haremos será comprobar si el plugin de pipelines está instalado, de no estarlo deberemos proceder a instalarlo antes de poder continuar.
@@ -48,4 +94,5 @@ manualmente en el contenedor de texto o podemos invocar un script desde un admin
 >     
 >![image](https://github.com/user-attachments/assets/420c10e3-93ca-4195-84b8-37e9f2f82428)
 
-
+## 📍 Etapas paralelas y secuenciales.
+Cuando utilizamos las Pipelines declarativas.
