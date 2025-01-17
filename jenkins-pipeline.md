@@ -14,9 +14,13 @@ Por ejemplo, una pipeline podría tener etapas como "Construir", "Probar" y "Des
      
 ![image](https://github.com/user-attachments/assets/a717257f-de34-4cdb-80a2-0099a43723c2)
 
-## 📍 Tipos de Pipelines en Jenkins - Pipeline Declarativa.
+## 📍 Tipos de Pipelines en Jenkins.
+En Jenkins, existen dos tipos principales de pipelines que podemos utilizar para definir y automatizar el flujo de trabajo:
+
+### 🔸 Pipeline Declarativa.
 La pipeline declarativa en Jenkins utiliza una sintaxis más estructurada y fácil de leer, lo que facilita la creación y el mantenimiento de pipelines complejos.
-    
+- Es ideal para la mayoría de los casos y equipos grandes debido a su simplicidad y claridad.
+         
 ```groovy
 pipeline {
     agent any
@@ -40,9 +44,10 @@ pipeline {
 }
 ```    
 
-## 📍 Tipos de Pipelines en Jenkins - Pipeline Guinizada o Scripted Pipepline.
+### 🔸 Pipeline Guinizada o Scripted Pipepline.
 La pipeline scripted ofrece mayor flexibilidad y control, pero a cambio de una mayor complejidad en la lectura y mantenimiento.
-    
+- Es adecuada para casos que requieran lógica personalizada o flujos complejos.
+        
 ```groovy
 node {
     stage('Build') {
@@ -56,10 +61,18 @@ node {
     }
 }
 ```
-**En resumen:**
-- **Declarative Pipeline:** Más sencilla y estructurada, ideal para la mayoría de los casos y equipos grandes.
-- **Scripted Pipeline:** Más flexible y poderosa, adecuada para casos que requieran lógica personalizada o flujos complejos.
 
+## 📍 El fichero Jenkinsfile.
+En Jenkins, podemos crear un archivo llamado `Jenkinsfile`. Este archivo se coloca en la raíz de tu proyecto, y Jenkins lo utiliza para configurar y ejecutar la pipeline. Al incluir el Jenkinsfile en tu repositorio de código, puedes versionar y gestionar tu flujo de trabajo junto con el código del proyecto, lo que facilita la colaboración y el mantenimiento.
+
+
+El Jenkinsfile se escribe en **`Groovy`**, un lenguaje de programación dinámico que se ejecuta en la máquina virtual de Java (JVM). Groovy es flexible y permite escribir código de forma concisa y expresiva, lo que lo hace adecuado para definir las pipelines en Jenkins de manera clara y estructurada.
+     
+Tanto la pipeline declarativa como la scripted en Jenkins se escriben utilizando Groovy. La diferencia principal radica en la estructura y la sintaxis que cada tipo de pipeline emplea, pero ambos utilizan el mismo lenguaje subyacente.
+
+   
+---
+   
 
 # 📌 Crear una pipeline.
 Para crear una pipeline lo primero que haremos será comprobar si el plugin de pipelines está instalado, de no estarlo deberemos proceder a instalarlo antes de poder continuar.
