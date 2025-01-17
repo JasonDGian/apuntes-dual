@@ -164,6 +164,47 @@ pipeline {
 **Ejemplo de orden de ejecución.**
 ![image](https://github.com/user-attachments/assets/0e2b0d80-52f3-4ba1-9a81-b2c0ee2e04bf)
 
+#### 🔹 Aborto de ejecución paralela.
+En las etapas paralelas es posible forzar el aborto de la ejecución completa cuando se produce un fallo.
+Para ello debemos introducir la propiedad `failFast` y configurarla a `true`.
+
+**Ejemplo**
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Parallel Stages') {
+            failFast true
+            parallel {
+                stage('Parallel Stage 1') {
+                    steps {
+                        echo 'Executing Parallel Stage 1'
+                        // Simulación de falla
+                        error 'Failure in Parallel Stage 1'
+                    }
+                }
+                stage('Parallel Stage 2') {
+                    steps {
+                        echo 'Executing Parallel Stage 2'
+                    }
+                }
+                stage('Parallel Stage 3') {
+                    steps {
+                        echo 'Executing Parallel Stage 3'
+                    }
+                }
+            }
+        }
+        stage('Post-Parallel Stage') {
+            steps {
+                echo 'This stage runs after the parallel stages'
+            }
+        }
+    }
+}
+```
+
+
 
 ---
 
