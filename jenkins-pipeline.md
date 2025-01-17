@@ -254,7 +254,7 @@ pipeline {
 ```
 
 #### 🔹 Aplicación por bloque options.
-Para aplicar estas opciones a un bloque completo deberemos introducir el  bloque `options`.
+Para aplicar estas opciones a un bloque completo deberemos introducir el  bloque `options`. En este bloque es donde definiremos las opciones que deseamos configurar.
 
 **Ejemplo bloque options en pipeline.**
 ```groovy
