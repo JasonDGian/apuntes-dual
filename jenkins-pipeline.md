@@ -204,6 +204,35 @@ pipeline {
 }
 ```
 
+## 📍 Timeout y Retry.
+Existen unos elementos llamados 'envoltorios' que podemos aplicar a una pipeline, una etapa o a un paso. En el caso de Timeout y Retry permiten gestionar el comportamiento en caso de fallo.
+
+### 🔸 Retry.
+Este envoltorio nos otorga un mecanismo para repetir una acción ( pipeline, etapa o paso ), en caso de fallo, un numero determinado de veces. 
+
+### 🔸 Timeout.
+El envoltorio o 'wrap' Timeout permite determinar un tiempo limite de ejecución. Si ese tiempo limite viene superado, Jenkins abortará la acción a la que se aplica el envoltorio.
+
+**Ejemplo de retry y timeout**:
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Etapa1') {
+            steps {
+                retry(3) {
+                    // INSTRUCCIÓN QUE SE REINTENTARÁ 3 VECES.
+                    sh 'echo "Intentando..."'
+                }
+                timeout(time: 3, unit: 'MINUTES') {
+                    // INSTRUCCIÓN CON LÍMITE DE TIEMPO AQUÍ.
+                    sh 'echo "Tiempo limitado a 3 minutos"'
+                }
+            }
+        }
+    }
+}
+```
 
 
 ---
