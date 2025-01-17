@@ -253,6 +253,42 @@ pipeline {
 }
 ```
 
+#### 🔹 Aplicación por bloque options.
+Para aplicar estas opciones a un bloque completo deberemos introducir el  bloque `options`.
+
+**Ejemplo bloque options en pipeline.**
+```groovy
+pipeline{
+    agent any
+    options {
+        timeout(time: 3, units: 'MINUTES')
+    }
+    stages{
+        stage('Ejemplo'){
+            steps{
+                echo 'Hello World!'
+            }
+        }
+    }
+}
+```
+
+**Ejemplo bloque options en Etapa.**
+```groovy
+pipeline{
+    agent any
+    stages{
+        stage('Ejemplo'){
+            options {
+                timeout(time: 3, units: 'MINUTES')
+            }
+            steps{
+                echo 'Hello World!'
+            }
+        }
+    }
+}
+```
 
 >[!TIP]
 > **Para ver otras opciones de ejecución, consulta la [documentación oficial de jenkins](https://www.jenkins.io/doc/book/pipeline/syntax/#options).**
