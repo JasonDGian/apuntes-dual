@@ -70,9 +70,103 @@ El Jenkinsfile se escribe en **`Groovy`**, un lenguaje de programación dinámic
      
 Tanto la pipeline declarativa como la scripted en Jenkins se escriben utilizando Groovy. La diferencia principal radica en la estructura y la sintaxis que cada tipo de pipeline emplea, pero ambos utilizan el mismo lenguaje subyacente.
 
-   
+## 📍 Etapas paralelas y secuenciales.
+Cuando utilizamos las Pipelines declarativas podemos especificar comportamientos relativos al tiempo o modo de ejecución de los pasos y etapas.
+Entre los comportamientos que podemos definir están la definición de etapas **secuenciales** y las estapas **paralelas**.
+
+### 🔸 Etapas secuenciales.
+Las etapas secuenciales en Jenkins son aquellas que se ejecutan en un orden específico, asegurando que una etapa debe completarse antes de que comience la siguiente. Esta estructura es útil para definir flujos de trabajo que dependen de la finalización exitosa de pasos anteriores.
+     
+Para definir etapas secuenciales en Jenkins, utilizamos la siguiente sintaxis:
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Estapa secuencial 1') {
+            steps {
+                // Paso para clonar el repositorio
+                git url: 'https://github.com/tu-repositorio.git'
+            }
+        }
+        stage('Estapa secuencial 2') {
+            steps {
+                // Paso para compilar el proyecto
+                sh './gradlew build'
+            }
+        }
+        stage('Estapa secuencial 4') {
+            steps {
+                // Paso para ejecutar pruebas unitarias
+                sh './gradlew test'
+            }
+        }
+        stage('Estapa secuencial 5') {
+            steps {
+                // Paso para empaquetar el proyecto
+                sh './gradlew assemble'
+            }
+        }
+        stage('Estapa secuencial 6') {
+            steps {
+                // Paso para desplegar el proyecto
+                sh 'scp build/libs/tu-app.jar user@server:/ruta/destino'
+            }
+        }
+    }
+}
+```
+    
+**Representación visual etapas secuenciales**.
+Cada una de estas etapas se ejecutará secuencialmente, asegurando que solo se avance a la siguiente etapa si la etapa actual se completa con éxito.
+    
+![image](https://github.com/user-attachments/assets/d510edbf-87e6-4a89-a6d9-ee1420dea9f4)
+
+
+### 🔸 Etapas paralelas.
+Las etapas paralelas en Jenkins permiten que múltiples etapas se ejecuten al mismo tiempo, aprovechando la concurrencia para acelerar el proceso de build, prueba y despliegue. Esto es útil cuando tienes tareas que pueden ejecutarse independientemente y en paralelo, como diferentes conjuntos de pruebas o compilaciones para diferentes plataformas.
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Parallel Tests') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        echo 'Running unit tests...'
+                        // Comando para ejecutar pruebas unitarias
+                    }
+                }
+                stage('Integration Tests') {
+                    steps {
+                        echo 'Running integration tests...'
+                        // Comando para ejecutar pruebas de integración
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
+    }
+}
+```
+**Ejemplo de estructura**.
+![image](https://github.com/user-attachments/assets/09be1cea-7860-4755-ad3d-eed31576b389)
+
+**Ejemplo de orden de ejecución.**
+![image](https://github.com/user-attachments/assets/0e2b0d80-52f3-4ba1-9a81-b2c0ee2e04bf)
+
+
 ---
-   
+
 
 # 📌 Crear una pipeline.
 Para crear una pipeline lo primero que haremos será comprobar si el plugin de pipelines está instalado, de no estarlo deberemos proceder a instalarlo antes de poder continuar.
@@ -106,6 +200,3 @@ manualmente en el contenedor de texto o podemos invocar un script desde un admin
 >```
 >     
 >![image](https://github.com/user-attachments/assets/420c10e3-93ca-4195-84b8-37e9f2f82428)
-
-## 📍 Etapas paralelas y secuenciales.
-Cuando utilizamos las Pipelines declarativas.
