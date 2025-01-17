@@ -44,7 +44,7 @@ pipeline {
 }
 ```    
 
-### 🔸 Pipeline Guinizada o Scripted Pipepline.
+### 🔸 Pipeline Guionizada o Scripted Pipepline.
 La pipeline scripted ofrece mayor flexibilidad y control, pero a cambio de una mayor complejidad en la lectura y mantenimiento.
 - Es adecuada para casos que requieran lógica personalizada o flujos complejos.
         
@@ -234,7 +234,29 @@ pipeline {
 }
 ```
 
+**También es posible combinar opciones.**
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Etapa1') {
+            steps {
+                retry(3) {
+                    timeout(time: 3, unit: 'MINUTES') {
+                         // INSTRUCCIÓN QUE SE REINTENTARÁ 3 VECES CON LIMITE DE TIEMPO.
+                         sh 'echo "Intentando en tiempo limitado..."'
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
+
+>[!TIP]
+> **Para ver otras opciones de ejecución, consulta la [documentación oficial de jenkins](https://www.jenkins.io/doc/book/pipeline/syntax/#options).**
+    
 ---
 
 
