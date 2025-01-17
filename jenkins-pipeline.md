@@ -294,6 +294,73 @@ pipeline{
 > **Para ver otras opciones de ejecución, consulta la [documentación oficial de jenkins](https://www.jenkins.io/doc/book/pipeline/syntax/#options).**
     
 ---
+    
+## 📍 Variables de entorno y Credenciales.
+En jenkins es posible definir variables de entorno. Estas variables se pueden declarar para todo el pipeline o para un stage especifico.
+Uno de los mayores beneficios de esta funcionalidad es el uso de variables para credenciales.
+
+### 🔸 Definición de variables.
+**Ejemplo de declaración de variables de entorno:**
+```groovy
+pipeline {
+    agent any
+    environment {
+        MI_VARIABLE = 'valor_de_ejemplo'
+    }
+    stages {
+        stage('Etapa1') {
+            steps {
+                echo "El valor de MI_VARIABLE es: ${env.MI_VARIABLE}"
+            }
+        }
+    }
+}
+```
+
+### 🔸 Configuración de credenciales.
+Para configurar objetos de credenciales en Jenkins seguimos los siguientes pasos.
+    
+- Abrimos el panel de control y pinchamos en 'Manage Credentials'.
+![image](https://github.com/user-attachments/assets/eee60bac-01a1-46f7-ba1b-cfc8c53300fb)
+    
+- Seleccionamos un ambito o dominio para los credenciales.
+![image](https://github.com/user-attachments/assets/ce5f91f2-c909-439d-a667-427d7b51fef0)
+
+- Seleccionamos el tipo de usuario que deseamos crear.
+En este apartado podemos elegir entre distintos tipos de autenticación que podemos configurar para Jenkins. En el caso de este ejemplo seleccionamos sencillamen el Username with Password`.
+![image](https://github.com/user-attachments/assets/ac81dcb5-ab0e-4d92-8f19-8c2997452e1e)
+
+    
+- Rellenamos el formulario con los detalles del usuario.
+![image](https://github.com/user-attachments/assets/5d0af632-9fad-4706-bd9c-49de84d37229)
+
+### 🔸 Uso de credenciales con variables de entorno.
+En el bloque de variables de entorno podemos referenciar un objeto de credenciales por su identificador.
+
+**Ejemplo de referencia a credenciales**:
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Ejemplo credenciales') {
+            environment {
+                CREDENCIALES_USUARIO = credentials('USUARIO1')
+                TEXTO_SECRETO = credentials('USUARIO2')
+            }
+            steps {
+                sh 'echo "El usuario es $CREDENCIALES_USUARIO_USR"'
+                sh 'echo "La contraseña es $CREDENCIALES_USUARIO_PSW"'
+                sh 'echo $TEXTO_SECRETO'
+            }
+        }
+    }
+}   
+```
+
+>[!IMPORTANT]
+> Jenkins conoce la naturaleza el objeto de credenciales `user with password` y `secret text`, y por lo tanto el resultado de imprimir los datos por pantalla serán simples asteriscos.
+>![image](https://github.com/user-attachments/assets/dd82cf1c-e8b3-438b-b3bc-def6dd20c05f)
+
 
 
 # 📌 Crear una pipeline.
