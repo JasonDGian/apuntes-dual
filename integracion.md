@@ -1,8 +1,11 @@
- # 📌 Integración de Jenkins con Github y Maven.
- 1. Instalar plugins de Github y Maven y configurarlos.
- 2. Hacer pull del repositorio de GitHub.
- 3. Configurar las tareas a ejecutar tras el pull.
-
+![image](https://github.com/user-attachments/assets/cb6abe8d-35d1-49a3-bc90-bdf1ca630ab9) # 📌 Integración de Jenkins con Github y Maven.
+ Los pasos que vamos a seguir para realizar este proceso son los siguientes:
+ 1. Instalación de plugins y configuración.
+ 2. Pull del repositorio de Maven en Jenkins.
+ 3. Realizar el Build de la aplicación.
+ 4. Realizar tests sobre el build.
+ 5. Desplegar la aplicación.
+ 
  ## 📍 Instalación de plugins y configuración.
  Antes de comenzar debemos de instalar el plug-in de Github y de Maven para luego configurarlos.
  Para ello vamos al panel lateral izquierdo y pinchamos en `Administrar Jenkins`.
@@ -56,8 +59,29 @@ Aquí seleccionamos `Git` como opción de origen y configuramos los parametros n
 ![image](https://github.com/user-attachments/assets/e24a0c3c-6650-4f9b-8c80-b839c6d292fe)
 
 
- ## 📍 Ejecutar tareas tras el pull.
- 
+ ## 📍 Realizar el Build de la aplicación.
+ Volviendo a la tarea en la que estamos configurando, en la sección **Ejectuar**, pinchamos en **`Añadir nuevo paso`** y seleccionamos **`Ejecutar tareas 'maven' de nivel superior`**.    
+    
+ ![image](https://github.com/user-attachments/assets/fe32c395-9970-4b0c-82d8-828667b87b77)
+
+En el formulario emergente deberemos introducir dos datos.
+- El nombre de la instalación que hemos hecho con maven en el paso 1 de esta guía, en mi caso será _`mavenjenkins`_.
+- El **`goal`** de Maven que deseamos para la ejecución.    
+
+>[!Tip]
+>Un "_goal_" en Maven es una acción específica que se ejecuta como parte del ciclo de vida de construcción de un proyecto.
+  
+>[!IMPORTANT]
+> Al configurar los "goals" de Maven en Jenkins, no debemos inclur el prefijo `mvn`. Esto sucede porque Jenkins ya sabe que estamos trabajando con maven y no deberemos volver a indicar que el comando que estamos introduciendo se trata de un comando maven. 
+    
+![image](https://github.com/user-attachments/assets/297a1e79-0672-48a3-bf01-b58e7b1874df)
+   
+### 🔸 **Acerca del comando `mvn -B clean -DskipTests package`**    
+El comando utilizado en el ejemplo anterior es un comando compuesto por 4 instrucciones. 
+- `-B`: Ejecuta Maven en modo no interactivo para entornos automatizados.
+- `-DskipTests`: Compila el código fuente y salta la ejecución de tests.
+- `clean`: Limpia los archivos de construcción anteriores.
+- `package`: Empaqueta el código compilado en un archivo distribuible.
 
       
 
