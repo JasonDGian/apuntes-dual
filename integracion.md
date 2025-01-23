@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/cb6abe8d-35d1-49a3-bc90-bdf1ca630ab9) # 📌 Integración de Jenkins con Github y Maven.
+# 📌 Integración de Jenkins con Github y Maven.
  Los pasos que vamos a seguir para realizar este proceso son los siguientes:
  1. Instalación de plugins y configuración.
  2. Pull del repositorio de Maven en Jenkins.
@@ -53,14 +53,14 @@ Aquí seleccionamos `Git` como opción de origen y configuramos los parametros n
 ![image](https://github.com/user-attachments/assets/40909841-7c96-4f38-9fdf-351d44737169)
 
 
- ### 🔸 Comprobación del éxito de la operación pull.
+ #### 🔸 Comprobación del éxito de la operación pull.
  Para comprobar que la tarea es capaz de clonar el repositorio vamos a lanzarla y a consultar el output de la consola.
       
 ![image](https://github.com/user-attachments/assets/e24a0c3c-6650-4f9b-8c80-b839c6d292fe)
 
 
  ## 📍 Realizar el Build de la aplicación.
- Volviendo a la tarea en la que estamos configurando, en la sección **Ejectuar**, pinchamos en **`Añadir nuevo paso`** y seleccionamos **`Ejecutar tareas 'maven' de nivel superior`**.    
+ Volviendo a la tarea que estamos configurando, en la sección **Ejectuar**, pinchamos en **`Añadir nuevo paso`** y seleccionamos **`Ejecutar tareas 'maven' de nivel superior`**.    
     
  ![image](https://github.com/user-attachments/assets/fe32c395-9970-4b0c-82d8-828667b87b77)
 
@@ -76,15 +76,79 @@ En el formulario emergente deberemos introducir dos datos.
     
 ![image](https://github.com/user-attachments/assets/297a1e79-0672-48a3-bf01-b58e7b1874df)
    
-### 🔸 **Acerca del comando `mvn -B clean -DskipTests package`**    
+#### 🔸 **Acerca del comando `mvn -B clean -DskipTests package`**    
 El comando utilizado en el ejemplo anterior es un comando compuesto por 4 instrucciones. 
 - `-B`: Ejecuta Maven en modo no interactivo para entornos automatizados.
 - `-DskipTests`: Compila el código fuente y salta la ejecución de tests.
 - `clean`: Limpia los archivos de construcción anteriores.
 - `package`: Empaqueta el código compilado en un archivo distribuible.
-
-      
-
-
-
     
+Esto nos permitirá obtener el artefacto final rápidamente, omitiendo la fase de pruebas. El artefacto generado será un archivo empaquetado listo para su ejecución o despliegue, aunque necesitará el comando `java -jar` para ser ejecutado si es un archivo JAR, o ser desplegado en un servidor de aplicaciones si es un archivo WAR.
+      
+Una vez configurado el paso de Build procedemos a configurar las notificaciones.   
+Pinchamos en **`Acciones para ejecutar después`** y seleccionamos el tipo de notificación deseada.    
+    
+![image](https://github.com/user-attachments/assets/af4a1094-6f0d-4ccd-8eaa-3ae04e1fb2a4)
+    
+Activamos las configuraciones de notificacion para los fallos y para la 'vuelta a la normalidad' y pinchamos en **`Guardar`**.    
+![image](https://github.com/user-attachments/assets/6d403e92-cc24-4ac5-a8d7-c8ef893dc8b1)
+
+   
+## 📍 Realizar pruebas unitarias.
+ Volviendo a la tarea que estamos configurando, en la sección **Ejectuar**, pinchamos en **`Añadir nuevo paso`** y seleccionamos **`Ejecutar tareas 'maven' de nivel superior`**.    
+    
+![image](https://github.com/user-attachments/assets/e2d3024b-46f9-4a4f-8b9e-1b6dd30a5bae)
+
+Introducimos la instalación de maven que deseamos emplear para el paso y como goal introducimos `test` para indicar que se trata de un `mvn test`.    
+    
+![image](https://github.com/user-attachments/assets/b30e49d4-47bc-4af1-8f27-a41ce53da38e)
+
+Nos deberá de quedar asi.
+![image](https://github.com/user-attachments/assets/e2a89efa-6613-4d92-aeb6-3bee7057e0ee)
+
+Ejecutando la tarea, veremos que ahora dispone de un paso más que es el paso de TESTS.    
+     
+![image](https://github.com/user-attachments/assets/acc45188-b66a-4e36-abaf-d13d008351d1)
+
+#### 🔸 Configuración de la Generación de Informes XML para Resultados de los Tests.
+En Jenkins, es posible configurar una salida gráfica muy útil para visualizar los resultados de los tests de aplicaciones Maven. Para hacerlo, primero necesitamos saber dónde nuestra aplicación almacena los resultados de los tests. Para averiguarlo, debemos ejecutar la tarea en Jenkins y buscar el output correspondiente en la consola.
+    
+![image](https://github.com/user-attachments/assets/e42d9396-8b1c-48b1-964d-1c5f033f4986)
+    
+Con esta ruta como referencia, volvemos a la configuración de la tarea y en la sección **`Ejecutar después`** añadiremos una nueva acción seleccionando **`Publicar los resultados de tests JUnit`**.     
+     
+![image](https://github.com/user-attachments/assets/5deab1ab-98ae-4e1a-937b-abecc66f466d)
+
+Introducimos la ruta **relativa** donde se almacenan los informes en formato **`.xml`** y le indicamos que recoja todos los ficheros con esa extensión.
+![image](https://github.com/user-attachments/assets/c243c470-f211-4281-8f4f-0b843a493b48)
+
+A partir de ahora, al ejecutar la tarea configurada, nos aparecerá la opción para visualizar los resultados.
+    
+![image](https://github.com/user-attachments/assets/bfe5ed1d-bca5-4420-b6ec-53fb09a029e3)
+    
+#### 🔸 **Acerca del comando `mvn test`**
+Este comando se encarga de escanear el proyecto, encontrar los tests y ejecutarlos.
+
+## 📍 Realizar despliegue de la aplicación.
+Cada vez que realizamos la compilación, se generará un nuevo artefacto en la ruta configurada o por defecto de proyecto. En mi caso la ruta es **`/var/jenkins_home/workspace/Java App con Maven/target`** (dentro del contenedor Docker que hospita el servicio Jenkins).  
+
+Volviendo a la tarea que estamos configurando, en la sección **Ejectuar**, pinchamos en **`Añadir nuevo paso`** y seleccionamos **`Ejecutar linea de comandos`**.    
+En el formulario de texto introducimos la instrucción **`java -jar [ruta/artefacto]`** para la ejecución. Es además buena idea introducir una instrucción **`echo`** con un mensaje reconocible para facilitar la identificacion de este paso en la salida de la consola.
+
+![image](https://github.com/user-attachments/assets/7a40e11d-bd75-4ad4-85ef-b6e586ee2292)
+
+![image](https://github.com/user-attachments/assets/2e71bc6c-b072-4fd4-8172-8c300da307ff)
+
+#### 🔸 Guardar la ultima ejecución exitosa.
+En Jenkins podemos almacenar y guardar la última ejecución del proyecto que se ejecutó sin dar fallos. Para configurar esta funcionalidad vamos a la tarea y en **`Acciones para ejecutar después`** y hacemos clic en **`Añadir una acción`** y seleccionamos **`Guardar los archivos generados.`**.
+   
+![image](https://github.com/user-attachments/assets/696799e1-d16c-4161-ab3d-f85bc8b29dd1)
+
+Pinchamos en **`Avanzado`** y especificamos la ruta  donde se compilan nuestros artefactos indicando que deseamos almacenar los ficheros **`.jar`**. Indicamos además que deseamos almacenar solo los artefactos que han sido compilados con éxito.   
+    
+![image](https://github.com/user-attachments/assets/466f63e5-acba-4fb0-bcd8-f7a1bbe53142)
+
+Una vez configurada esta funcionalidad, si ejecutamos nuestra aplicacion y esta no falla, podremos comprobar como aparece una nueva opción de descarga.    
+    
+![image](https://github.com/user-attachments/assets/8db5496b-5a58-4544-a7a7-af954be27d39)
+
