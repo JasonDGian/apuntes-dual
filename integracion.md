@@ -2,12 +2,12 @@
  Los pasos que vamos a seguir para realizar este proceso son los siguientes:
  1. Instalación de plugins y configuración.
  2. Pull del repositorio de Maven en Jenkins.
- 3. Realizar el Build de la aplicación.
- 4. Realizar tests sobre el build.
+ 3. Realizar el _build_ (compilación) de la aplicación.
+ 4. Realizar tests sobre el _build_.
  5. Desplegar la aplicación.
  
  ## 📍 Instalación de plugins y configuración.
- Antes de comenzar debemos de instalar el plug-in de Github y de Maven para luego configurarlos.
+ Antes de comenzar debemos instalar el plug-in de Github y de Maven para luego configurarlos.
  Para ello vamos al panel lateral izquierdo y pinchamos en `Administrar Jenkins`.
     
  ![image](https://github.com/user-attachments/assets/7d744485-ab38-4deb-b473-0014ae5de7c6)
@@ -16,7 +16,7 @@ Esto nos llevará a un nuevo panel donde pincharemos en `Administrar Plugins`.
     
 ![image](https://github.com/user-attachments/assets/2c56252e-9efd-41ce-b605-b27e84fcb023)
     
-A continuación consultaremos en la pestaña de `Plugins instalados`si aparece el plugin de "_Github Branch Source Planning_", de no aparecer usaremos la pestaña `Todos los plugins` y lo instalaremos.
+A continuación consultaremos en la pestaña de `Plugins instalados` si aparece el plugin de "_Github Branch Source Planning_", de no aparecer usaremos la pestaña `Todos los plugins` y lo instalaremos.
     
 ![image](https://github.com/user-attachments/assets/ea144442-b0ab-4928-9cb4-6188b910ebbf)
 
@@ -28,7 +28,7 @@ Al pinchar en instalar aparecerá la siguiente pantalla. En ella activamos la op
     
 ![image](https://github.com/user-attachments/assets/0e5f2548-6c21-4cad-80ea-3104d706ab22)
 
-Ahora debemos de configurar el plugin de Maven para Jenkins. Vamos al panel lateral izquierdo y pinchamos en `Administrar Jenkins` luego en `Herramientas de configuración global`.
+Ahora debemos configurar el plugin de Maven para Jenkins. Vamos al panel lateral izquierdo y pinchamos en `Administrar Jenkins` luego en `Herramientas de configuración global`.
      
 ![image](https://github.com/user-attachments/assets/02e85234-9fff-4f64-9199-81a98de0ee30)
     
@@ -59,20 +59,20 @@ Aquí seleccionamos `Git` como opción de origen y configuramos los parametros n
 ![image](https://github.com/user-attachments/assets/e24a0c3c-6650-4f9b-8c80-b839c6d292fe)
 
 
- ## 📍 Realizar el Build de la aplicación.
+ ## 📍 Realizar el _build_ de la aplicación.
  Volviendo a la tarea que estamos configurando, en la sección **Ejectuar**, pinchamos en **`Añadir nuevo paso`** y seleccionamos **`Ejecutar tareas 'maven' de nivel superior`**.    
     
  ![image](https://github.com/user-attachments/assets/fe32c395-9970-4b0c-82d8-828667b87b77)
 
 En el formulario emergente deberemos introducir dos datos.
 - El nombre de la instalación que hemos hecho con maven en el paso 1 de esta guía, en mi caso será _`mavenjenkins`_.
-- El **`goal`** de Maven que deseamos para la ejecución.    
+- El **`goal`** (objetivo) de Maven que deseamos para la ejecución.    
 
 >[!Tip]
->Un "_goal_" en Maven es una acción específica que se ejecuta como parte del ciclo de vida de construcción de un proyecto.
+>Un "_goal_" u _objetivo_ en Maven es una acción específica que se ejecuta como parte del ciclo de vida de construcción de un proyecto.
   
 >[!IMPORTANT]
-> Al configurar los "goals" de Maven en Jenkins, no debemos inclur el prefijo `mvn`. Esto sucede porque Jenkins ya sabe que estamos trabajando con maven y no deberemos volver a indicar que el comando que estamos introduciendo se trata de un comando maven. 
+> Al configurar los "goals" (objetivos) de Maven en Jenkins, no debemos inclur el prefijo `mvn`. Esto sucede porque Jenkins ya sabe que estamos trabajando con maven y no deberemos volver a indicar que el comando que estamos introduciendo se trata de un comando maven. 
     
 ![image](https://github.com/user-attachments/assets/297a1e79-0672-48a3-bf01-b58e7b1874df)
    
@@ -85,7 +85,7 @@ El comando utilizado en el ejemplo anterior es un comando compuesto por 4 instru
     
 Esto nos permitirá obtener el artefacto final rápidamente, omitiendo la fase de pruebas. El artefacto generado será un archivo empaquetado listo para su ejecución o despliegue, aunque necesitará el comando `java -jar` para ser ejecutado si es un archivo JAR, o ser desplegado en un servidor de aplicaciones si es un archivo WAR.
       
-Una vez configurado el paso de Build procedemos a configurar las notificaciones.   
+Una vez configurado el paso de _build_ procedemos a configurar las notificaciones.   
 Pinchamos en **`Acciones para ejecutar después`** y seleccionamos el tipo de notificación deseada.    
     
 ![image](https://github.com/user-attachments/assets/af4a1094-6f0d-4ccd-8eaa-3ae04e1fb2a4)
@@ -103,7 +103,7 @@ Introducimos la instalación de maven que deseamos emplear para el paso y como g
     
 ![image](https://github.com/user-attachments/assets/b30e49d4-47bc-4af1-8f27-a41ce53da38e)
 
-Nos deberá de quedar asi.
+Nos deberá quedar así.
 ![image](https://github.com/user-attachments/assets/e2a89efa-6613-4d92-aeb6-3bee7057e0ee)
 
 Ejecutando la tarea, veremos que ahora dispone de un paso más que es el paso de TESTS.    
