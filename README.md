@@ -17,6 +17,7 @@ Jenkins es una herramienta de código abierto diseñada para facilitar los proce
 - Instalación en Docker (linux).
    
 [Guía de instalación.](/instalacion-jenkins.md)
+- [Usuario Jenkins](usuario-jenkinds.md)
    
 ## 📌 El usuario Jenkins.
 Cuando creamos un contenedor de Jenkins en un sistema Linux, uno de los pasos esenciales es garantizar que el contenedor tenga los permisos necesarios para leer y escribir en el directorio montado como volumen.
@@ -33,5 +34,6 @@ En estos apuntes se recoge:
 
 [Jenkins Jobs](/jenkins-jobs.md)
 
-
-
+## 📌 Integración de Jenkins con proyectos Maven
+En esta sección se instruye como lograr la integración continua de Jenkins con una aplicación Java Maven.    
+[Integración Jenkins Maven](integracion.md)
