@@ -72,7 +72,7 @@ En el formulario emergente deberemos introducir dos datos.
 >Un "_goal_" u _objetivo_ en Maven es una acción específica que se ejecuta como parte del ciclo de vida de construcción de un proyecto.
   
 >[!IMPORTANT]
-> Al configurar los "goals" (objetivos) de Maven en Jenkins, no debemos inclur el prefijo `mvn`. Esto sucede porque Jenkins ya sabe que estamos trabajando con maven y no deberemos volver a indicar que el comando que estamos introduciendo se trata de un comando maven. 
+> Al configurar los "goals" (objetivos) de Maven en Jenkins, no debemos incluir el prefijo `mvn`. Esto sucede porque Jenkins ya sabe que estamos trabajando con maven y no deberemos volver a indicar que el comando que estamos introduciendo se trata de un comando maven. 
     
 ![image](https://github.com/user-attachments/assets/297a1e79-0672-48a3-bf01-b58e7b1874df)
    
