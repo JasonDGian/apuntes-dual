@@ -59,7 +59,7 @@ Aquí seleccionamos `Git` como opción de origen y configuramos los parametros n
 ![image](https://github.com/user-attachments/assets/e24a0c3c-6650-4f9b-8c80-b839c6d292fe)
 
 
- ## 📍 Realizar el _build_ de la aplicación.
+ ## 📍 Realizar el _build_ (compilación) de la aplicación.
  Volviendo a la tarea que estamos configurando, en la sección **Ejectuar**, pinchamos en **`Añadir nuevo paso`** y seleccionamos **`Ejecutar tareas 'maven' de nivel superior`**.    
     
  ![image](https://github.com/user-attachments/assets/fe32c395-9970-4b0c-82d8-828667b87b77)
