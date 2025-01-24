@@ -65,8 +65,9 @@ Cuando hablamos de autorización hablamos de la funcion de especificar 'derechos
 - Usuarios autenticados pueden realizar cualquier acción.
 - Estrategia de seguridad según proyecto.
 - Plug-in de estrategia basada en roles.
-
-
+   
+---
+    
 ### 🔸 Configuración de estrategia basada en proyecto.
 Para configurar esta estrategia de autorización, en el panel lateral izquierdo, pinchamos en **`Administrar Jenkins`** y a continuación en **`Configuración global de la seguridad`**. Una vez aquí seleccionamos **`Estrategia de seguridad para el proyecto`**.   
     
@@ -95,7 +96,9 @@ En la tabla de usuarios y grupos podremos otorgarles permisos para realizar dist
 
 ##### Modificacion de tareas mediante Jenkinsfile.
 Para los desarrolladores es también posible modificar el Jenkinsfile, o añadir uno proprio para configurar distintamente una tarea de Jenkins sin necesidad de tener acceso de modificacion otorgado en Jenkins. 
-
+    
+---
+    
 ### 🔸 Configuración de estrategia basada en plugin roles y grupos.
 El primer paso para implementar este tipo de configuración será instalar el plug-in.
 Para ello vamos al panel de control de Jenkins y pinchamos en **`Administrar Plugins`**.    
@@ -124,12 +127,27 @@ Para crear un nuevo rol introducimos el nombre en el campo de texto **`Role to a
 ![image](https://github.com/user-attachments/assets/303b9fa6-11ed-437e-9636-a3bbf1f81d5b)
      
 Para configurar los permisos de este nuevo rol deberemos activar los permisos deseados en la tabla de roles globales.    
+      
+![image](https://github.com/user-attachments/assets/d587fd33-683c-4d6b-be9d-89b9905db3cf)
      
-![image](https://github.com/user-attachments/assets/e375c83d-6f6c-472f-8aa9-fbfa08dbc1f5)
+<!-- ![image](https://github.com/user-attachments/assets/e375c83d-6f6c-472f-8aa9-fbfa08dbc1f5) -->
 
 
 >[!CAUTION]
 > El permiso de lectura en el apartado Global debe ser otorgado a todos los usuarios y grupos para que puedan utilizar la plataforma. De no otorgar este permiso, se generarán errores críticos que impedirán al usuario o grupo funcionar correctamente, independientemente del resto de permisos que reciban.
 
+#### 🔹 Asignar un rol a un usuario.
+Para asignar un rol a un usuario, en el panel decontrol del plugin, pinchamos en **`Assign roles`**.    
+    
+![image](https://github.com/user-attachments/assets/626576e8-0815-4874-ba57-3e8ec65a63b7)
 
+En la ventana que aparece, añadiremos el usuario al que deseamos asignar el rol.   
+   
+![image](https://github.com/user-attachments/assets/667d583f-318c-408c-8073-85f93bb89714)
 
+Una vez el usuario aparece en la tabla, pinchamos en el checkbox del rol que deseamos asignarle.   
+   
+![image](https://github.com/user-attachments/assets/37e435c1-dec0-45e6-9fac-273939d98698)     
+    
+A continuación pinchamos en **`Guardar`** para hacer efectivos los cambios.     
+     
