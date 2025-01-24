@@ -119,4 +119,17 @@ Para crear roles, en el panel de control del plugin, pinchamos en **`Manage Role
    
 ![image](https://github.com/user-attachments/assets/6c6566ff-8169-4f6d-b894-dd0f4d23f8f4)
 
+Para crear un nuevo rol introducimos el nombre en el campo de texto **`Role to add`** y pinchamos en **`Add`**.   
+    
+![image](https://github.com/user-attachments/assets/303b9fa6-11ed-437e-9636-a3bbf1f81d5b)
+     
+Para configurar los permisos de este nuevo rol deberemos activar los permisos deseados en la tabla de roles globales.    
+     
+![image](https://github.com/user-attachments/assets/e375c83d-6f6c-472f-8aa9-fbfa08dbc1f5)
+
+
+>[!CAUTION]
+> El permiso de lectura en el apartado Global debe ser otorgado a todos los usuarios y grupos para que puedan utilizar la plataforma. De no otorgar este permiso, se generarán errores críticos que impedirán al usuario o grupo funcionar correctamente, independientemente del resto de permisos que reciban.
+
+
 
