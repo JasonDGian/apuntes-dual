@@ -1,7 +1,8 @@
 # 📌 Seguridad en Jenkins
 Jenkins es una herramienta vital en el ecosistema de una empresa de desarrollo. Para protegerla, es esencial seguir las prácticas conocidas como 'buenos hábitos', que incluyen lo siguiente:
 
-**¿Por qué es importante la seguridad en Jenkins?**  
+>[!NOTE]
+>**¿Por qué es importante la seguridad en Jenkins?**  
 En el pasado, se han descubierto brechas de seguridad que pueden ser explotadas sin necesidad de iniciar sesión en Jenkins. Esto ha permitido a usuarios malintencionados acceder a una cantidad significativa de información sensible.
 
 ### 🔸 Proteger Jenkins de Internet
@@ -21,3 +22,13 @@ Es evidente la razón detrás de esta práctica: las claves complejas son signif
 
 ### 🔸 Mantener Jenkins actualizado a la última versión disponible
 Es fundamental mantener Jenkins siempre actualizado. Cada actualización incluye mejoras de seguridad cruciales, resolviendo vulnerabilidades y corrigiendo fallos que podrían ser explotados por usuarios malintencionados para acceder a información y datos sensibles.
+
+> [!IMPORTANT]
+> Al igual que con la versión de Jenkins, los plugins son piezas de software que deben mantenerse actualizadas a la última versión por los mismos motivos.
+
+### 🔸 Usar versiones LTS (Long Term Support)
+Las versiones LTS reciben soporte durante un lapso de tiempo más extendido en comparación con las versiones regulares. Es una buena idea emplear, en la medida de lo posible, versiones LTS que son más estables.  
+**En Jenkins contenedorizado: Usar la `latest-tag`.**
+
+### 🔸 Consultar el changelog
+Es de vital importancia consultar el registro de cambios (_changelog_). Este registro recoge los cambios introducidos en el salto de una versión a otra y es importante estar al tanto en el caso de que haya que realizar cambios en el flujo de trabajo o instalación.
