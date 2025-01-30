@@ -17,7 +17,8 @@ El **Principio de Abierto/Cerrado** establece que una clase debe poder extender 
 Este principio promueve la reutilización del código y minimiza el riesgo de introducir errores al cambiar clases existentes. 
 El cambiar una clase existente puede inducir problemas catastroficos y tareas de diagnóstico dificiles de realizar.
 
-## 🔸 
+## 🔸 Liskov substitution principle - LSP | Principio de substitución de Liskov.
+
 
 ## 🔸 
 
