@@ -46,3 +46,8 @@ Una API REST no tipificada ofrece más flexibilidad, pero a costa de potenciales
 - **Documentación:** La documentación puede ser menos precisa y detallada, lo que puede causar confusión entre los desarrolladores.
 
 En resumen, una API no tipificada ofrece mayor flexibilidad en el manejo de datos, pero a costa de una mayor posibilidad de errores y problemas de consistencia. La elección entre una API tipificada y una no tipificada depende de las necesidades específicas y prioridades del proyecto.
+
+## 🔸 Cuando tipificar y cuando no.
+En resumen, la elección de usar APIs tipificadas o no tipificadas depende de los requisitos específicos de flexibilidad, consistencia y velocidad de desarrollo de cada tipo de microservicio. Los microservicios de arquitectura pueden priorizar la flexibilidad para integrarse con diversos sistemas, mientras que los microservicios de aplicación pueden priorizar la consistencia y la validación para asegurar la precisión y la integridad de los datos.
+
+# 🔹 
